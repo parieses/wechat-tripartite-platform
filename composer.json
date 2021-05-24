@@ -1,0 +1,35 @@
+{
+  "name": "liang/wechat-tripartite-platform",
+  "description": "PHP的微信第三方平台扩展库",
+  "homepage": "https://blog.csdn.net/pariese",
+  "type": "library",
+  "support": {
+    "source": "https://github.com/parieses"
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Mr. 亮先生",
+      "email": "1695699447@qq.com"
+    }
+  ],
+  "minimum-stability": "stable",
+  "require": {
+    "php": ">7.0.0",
+    "php-curl-class/php-curl-class": "^9.0",
+    "ext-curl": "*",
+    "ext-json": "*",
+    "ext-dom": "*",
+    "ext-libxml": "*",
+    "ext-simplexml": "*",
+    "ext-openssl": "*"
+  },
+  "config": {
+    "process-timeout": 1800
+  },
+  "autoload": {
+    "psr-4": {
+      "WeChat\\": "src/"
+    }
+  }
+}
