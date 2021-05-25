@@ -5,6 +5,11 @@ namespace WeChat\library;
 
 use WeChat\UrlConfig;
 
+/**
+ * 开放平台
+ * Class OpenPlatform
+ * @package WeChat\library
+ */
 class OpenPlatform
 {
     use Initialize;

@@ -7,7 +7,9 @@ namespace WeChat;
 class UrlConfig
 {
     public const baseUrl = 'https://api.weixin.qq.com';
-    //令牌
+    //启动ticket推送服务
+    public const apiStartPushTicket = self::baseUrl . "/cgi-bin/component/api_start_push_ticket";
+    //获取令牌
     public const apiComponentToken = self::baseUrl . '/cgi-bin/component/api_component_token';
     //获取授权码
     public const apiCreatePreauthcode = self::baseUrl . "/cgi-bin/component/api_create_preauthcode?component_access_token=";
@@ -48,7 +50,63 @@ class UrlConfig
     //修改试用小程序名称
     public const setBetaWeappNickName = self::baseUrl . "/wxa/setbetaweappnickname?access_token=";
     //获取公众号管理员授权
-    public const getMpAdminAuth= self::baseUrl . "/wxa/getmpadminauth?access_token=";
+    public const getMpAdminAuth = self::baseUrl . "/wxa/getmpadminauth?access_token=";
+    //复用公众号主体认证小程序
+    public const mpVerifyBetaWeapp = self::baseUrl . "/wxa/mpverifybetaweapp?access_token=";
+
+
+    //获取代码草稿列表
+    public const  getTemplateDraftList = self::baseUrl . "/wxa/gettemplatedraftlist?access_token=";
+    //将草稿添加到代码模板库
+    public const addToTemplate = self::baseUrl . "/wxa/addtotemplate?access_token=";
+    //获取代码模板列表
+    public const getTemplateList = self::baseUrl . "/wxa/gettemplatelist?access_token=";
+    //删除指定代码模板
+    public const deleteTemplate = self::baseUrl . "/wxa/deletetemplate?access_token=";
+
+
+    //绑定微信用户为体验者
+    public const bindTester = self::baseUrl . "/wxa/bind_tester?access_token=";
+    //解除绑定体验者
+    public const unbindTester = self::baseUrl . "/wxa/unbind_tester?access_token=";
+    //获取体验者列表
+    public const memberAuth = self::baseUrl . "/wxa/memberauth?access_token=";
+
+
+    //上传小程序代码
+    public const commit = self::baseUrl . "/wxa/commit?access_token=";
+    //获取已上传的代码的页面列表
+    public const getPage = self::baseUrl . "/wxa/get_page?access_token=";
+    //获取体验版二维码
+    public const getQrcode = self::baseUrl . "/wxa/get_qrcode?access_token=";
+    //提交审核
+    public const submitAudit = self::baseUrl . "/wxa/submit_audit?access_token=";
+    //查询指定发布审核单的审核状态
+    public const getAuditStatus = self::baseUrl . "/wxa/get_auditstatus?access_token=";
+    //查询最新一次提交的审核状态
+    public const getLatestAuditStatus = self::baseUrl . "/wxa/get_latest_auditstatus?access_token=";
+    //小程序审核撤回
+    public const undoCodeAudit = self::baseUrl . "/wxa/undocodeaudit?access_token=";
+    //发布已通过审核的小程序
+    public const release = self::baseUrl . "/wxa/release?access_token=";
+    //版本回退
+    public const revertCodeRelease = self::baseUrl . "/wxa/revertcoderelease?access_token=";
+    //分阶段发布
+    public const grayRelease = self::baseUrl . "/wxa/grayrelease?access_token=";
+    //查询当前分阶段发布详情
+    public const getGrayReleasePlan = self::baseUrl . "/wxa/getgrayreleaseplan?access_token=";
+    //取消分阶段发布
+    public const revertGrayRelease = self::baseUrl . "/wxa/revertgrayrelease?access_token=";
+    //修改小程序服务状态
+    public const changeVisitStatus = self::baseUrl . "/wxa/change_visitstatus?access_token=";
+    //查询当前设置的最低基础库版本及各版本用户占比
+    public const getWeappSupportVersion = self::baseUrl . "/cgi-bin/wxopen/getweappsupportversion?access_token=";
+    //设置最低基础库版本
+    public const setWeappSupportVersion = self::baseUrl . "/cgi-bin/wxopen/setweappsupportversion?access_token=";
+    //查询服务商的当月提审限额（quota）和加急次数
+    public const queryQuota = self::baseUrl . "/wxa/queryquota?access_token=";
     //
-    public const mpVerifyBetaWeapp= self::baseUrl ."/wxa/mpverifybetaweapp?access_token=";
+    public const speedUpAudit = self::baseUrl . "/wxa/speedupaudit?access_token=";
+
+
 }

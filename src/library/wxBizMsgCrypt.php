@@ -136,7 +136,6 @@ class WXBizMsgCrypt
 			return ErrorCode::$ValidateSignatureError;
 		}
 
-
         $result = $pc->decrypt($encrypt, $this->appId);
 		if ($result[0] != 0) {
 			return $result[0];

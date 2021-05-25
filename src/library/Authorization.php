@@ -6,6 +6,11 @@ use Curl\Curl;
 use DOMDocument;
 use WeChat\UrlConfig;
 
+/**
+ * 授权
+ * Class Authorization
+ * @package WeChat\library
+ */
 class Authorization
 {
     use Initialize;
@@ -44,15 +49,15 @@ class Authorization
      * Date: 2021/5/24
      * Time: 9:20
      * Email:1695699447@qq.com
-     * @param $msg_signature
-     * @param $timestamp
-     * @param $nonce
+     * @param $msg_signature :微信推送获取的验证串
+     * @param $timestamp     :微信推送获取的时间戳
+     * @param $nonce         :微信推送获取的随机数
+     * @param $encryptMsg    :微信推送获取的加密xml
      * @return bool|string|string[]|null
      */
-    public function getTicket($msg_signature, $timestamp, $nonce)
+    public function getTicket($msg_signature, $timestamp, $nonce, $encryptMsg)
     {
-        $pc = new WXBizMsgCrypt($this->token, $this->encodingAesKey, $this->appId);
-        $encryptMsg = file_get_contents("php://input");
+        $pc = new WXBizMsgCrypt($this->token, $this->encodingAesKey, $this->componentAppId);
         $xml_tree = new DOMDocument();
         $xml_tree->loadXML($encryptMsg);
         $array_e = $xml_tree->getElementsByTagName('Encrypt');
@@ -69,6 +74,26 @@ class Authorization
             return $component_verify_ticket;
         }
         return false;
+    }
+
+    /**
+     * 启动ticket推送服务
+     * Created by Mr.亮先生.
+     * program: wechat-tripartite-platform
+     * FuncName:apiStartPushTicket
+     * status:
+     * User: Mr.liang
+     * Date: 2021/5/25
+     * Time: 10:29
+     * Email:1695699447@qq.com
+     * @return mixed
+     */
+    public function apiStartPushTicket()
+    {
+        return $this->curl->post(
+            UrlConfig::apiStartPushTicket,
+            json_encode(['component_appid' => $this->componentAppId, 'component_secret' => $this->componentAppSecret])
+        );
     }
 
     /**

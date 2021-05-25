@@ -18,7 +18,7 @@ class WeChatServer
      * @param $params
      * @throws \ReflectionException
      */
-    public function __construct($class, $params)
+    public function __construct($class, $params = [])
     {
         $this->class = $class;
         //初始化 ReflectionClass 类
