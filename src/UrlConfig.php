@@ -105,8 +105,31 @@ class UrlConfig
     public const setWeappSupportVersion = self::baseUrl . "/cgi-bin/wxopen/setweappsupportversion?access_token=";
     //查询服务商的当月提审限额（quota）和加急次数
     public const queryQuota = self::baseUrl . "/wxa/queryquota?access_token=";
-    //
+    //加急审核申请
     public const speedUpAudit = self::baseUrl . "/wxa/speedupaudit?access_token=";
 
+
+    //获取基本信息
+    public const getAccountBasicInfo = self::baseUrl . "/cgi-bin/account/getaccountbasicinfo?access_token=";
+    //设置服务器域名
+    public const modifyDomain = self::baseUrl . "/wxa/modify_domain?access_token=";
+    //设置业务域名
+    public const setWebViewDomain = self::baseUrl . "/wxa/setwebviewdomain?access_token=";
+    //设置名称
+    public const setNickname = self::baseUrl . "/wxa/setnickname?access_token=";
+    //微信认证名称检测
+    public const checkWxVerifyNickname = self::baseUrl . "/cgi-bin/wxverify/checkwxverifynickname?access_token=";
+    //查询改名审核状态
+    public const apiWxaQueryNickname = self::baseUrl . "/wxa/api_wxa_querynickname?access_token=";
+    //修改头像
+    public const modifyHeadImage = self::baseUrl . "/cgi-bin/account/modifyheadimage?access_token=";
+    //修改功能介绍
+    public const modifySignature = self::baseUrl . "/cgi-bin/account/modifysignature?access_token=";
+    //查询隐私设置
+    public const getWxaSearchStatus = self::baseUrl . "/wxa/getwxasearchstatus?access_token=";
+    //修改隐私设置
+    public const changeWxaSearchStatus = self::baseUrl . "/wxa/changewxasearchstatus?access_token=";
+    //获取数据拉取配置|设置预拉取数据|设置周期性拉取数据
+    public const fetchDataSetting = self::baseUrl . "/wxa/fetchdatasetting?access_token=";
 
 }

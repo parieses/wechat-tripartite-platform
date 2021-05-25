@@ -18,6 +18,7 @@ src
 ```
 
 [部分接口未测试可提issues](https://github.com/parieses/wechat-tripartite-platform)
+
 路由统一管理文件:UrlConfig
 
 #### 目前集成模块
@@ -35,5 +36,8 @@ library下AppletMember
 
 [小程序代码管理接口](https://developers.weixin.qq.com/doc/oplatform/Third-party_Platforms/2.0/api/code/commit.html)
 library下AppletCode
+
+[小程序基础信息设置接口](https://developers.weixin.qq.com/doc/oplatform/Third-party_Platforms/2.0/api/Mini_Program_Basic_Info/Mini_Program_Information_Settings.html)
+library下AppletBasicInformation
 
 -使用方法课参见Test Receive TestCallBack 可统一由WeChatServer进行调用也可单独调用
