@@ -78,7 +78,7 @@ class UrlConfig
     //获取已上传的代码的页面列表
     public const getPage = self::baseUrl . "/wxa/get_page?access_token=";
     //获取体验版二维码
-    public const getQrcode = self::baseUrl . "/wxa/get_qrcode?access_token=";
+    public const getQrCode = self::baseUrl . "/wxa/get_qrcode?access_token=";
     //提交审核
     public const submitAudit = self::baseUrl . "/wxa/submit_audit?access_token=";
     //查询指定发布审核单的审核状态
@@ -137,4 +137,24 @@ class UrlConfig
     public const getIllegalRecords = self::baseUrl . "/wxa/getillegalrecords?access_token=";
     //获取小程序申诉记
     public const getAppealRecords = self::baseUrl . "/wxa/getappealrecords?access_token=";
+
+
+    //获取已设置的二维码规则
+    public const qrCodeJumpGet = self::baseUrl . "/cgi-bin/wxopen/qrcodejumpget?access_token=";
+    //获取校验文件名称及内容
+    public const qrCodeJumpDownload = self::baseUrl . "/cgi-bin/wxopen/qrcodejumpdownload?access_token=";
+    //增加或修改二维码规则
+    public const qrCodeJumpAdd = self::baseUrl . "/cgi-bin/wxopen/qrcodejumpadd?access_token=";
+    //发布已设置的二维码规则
+    public const qrCodeJumpPublish = self::baseUrl . "/cgi-bin/wxopen/qrcodejumppublish?access_token=";
+    //删除已设置的二维码规则
+    public const qrCodeJumpDelete = self::baseUrl . "/cgi-bin/wxopen/qrcodejumpdelete?access_token=";
+    //将二维码长链接转成短链接
+    public const shortUrl = self::baseUrl . "/cgi-bin/shorturl?access_token=";
+    //获取unlimited小程序码
+    public const getWxaCodeUnLimit = self::baseUrl . "/wxa/getwxacodeunlimit?access_token=";
+    //获取小程序码
+    public const getWxaCode = self::baseUrl . "/wxa/getwxacode?access_token=";
+    //获取小程序二维码
+    public const createWxaQrCode = self::baseUrl . "/cgi-bin/wxaapp/createwxaqrcode?access_token=";
 }

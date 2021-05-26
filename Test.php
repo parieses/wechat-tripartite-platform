@@ -7,6 +7,7 @@ use WeChat\library\AppletMember;
 use WeChat\library\AppletTemplate;
 use WeChat\library\Authorization;
 use WeChat\library\OpenPlatform;
+use WeChat\library\QrCode;
 use WeChat\library\TrialApplet;
 use WeChat\library\IllegalAndAppeal;
 use WeChat\WeChatServer;
@@ -73,17 +74,18 @@ $authorizer_refresh_token ="oZrs5Gaw7ULyRGfCvlFgIbkclJPARh3B3cAr5VRubmE"; //$api
 //var_dump($add);
 //$member = new AppletMember();
 //var_dump($member->memberAuth($authorizer_access_token));
-$code = new AppletCode();
-//file_put_contents("qrcode.png",$code->getQrcode($authorizer_access_token,'page/index'));
-$info = new AppletBasicInformation();
+//$code = new AppletCode();
+//file_put_contents("qrcode.png",$code->getQrCode($authorizer_access_token,'page/index'));
+//$info = new AppletBasicInformation();
 //var_dump($info->checkWxVerifyNickname($authorizer_access_token,'get'));
 //var_dump($info->fetchDataSetting($authorizer_access_token,'set_pre_fetch'));
-$ViolationsAndComplaints = new IllegalAndAppeal();
+//$ViolationsAndComplaints = new IllegalAndAppeal();
 //var_dump($ViolationsAndComplaints->getIllegalRecords($authorizer_access_token));
 //var_dump($ViolationsAndComplaints->getAppealRecords($authorizer_access_token,1212));
 
-
-
+$QrCode = new QrCode();
+//var_dump($QrCode->getWxaCode($authorizer_access_token,'page/index',430,false,null,false));
+//var_dump($QrCode->createWxaQrCode($authorizer_access_token,'/pages/loading/index'));
 
 
 

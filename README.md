@@ -43,5 +43,7 @@ library下AppletBasicInformation
 [违规和申诉管理](https://developers.weixin.qq.com/doc/oplatform/Third-party_Platforms/2.0/api/records/getillegalrecords.html)
 library下IllegalAndAppeal
 
+[普通链接二维码与小程序码](https://developers.weixin.qq.com/doc/oplatform/Third-party_Platforms/2.0/api/qrcode/qrcodejumpget.html)
+library下QrCode.php
 
 -使用方法课参见Test Receive TestCallBack 可统一由WeChatServer进行调用也可单独调用

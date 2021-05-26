@@ -39,6 +39,20 @@ class  IllegalAndAppeal
         return $this->curl->post(UrlConfig::getIllegalRecords . $access_token, json_encode(['start_time' => $start_time, 'end_time' => $end_time]));
     }
 
+    /**
+     * 获取小程序申诉记录
+     * Created by Mr.亮先生.
+     * program: wechat-tripartite-platform
+     * FuncName:getAppealRecords
+     * status:
+     * User: Mr.liang
+     * Date: 2021/5/26
+     * Time: 9:31
+     * Email:1695699447@qq.com
+     * @param $access_token      :第三方平台接口调用令牌authorizer_access_token
+     * @param $illegal_record_id :违规处罚记录id（通过getillegalrecords接口返回的记录id）
+     * @return mixed
+     */
     public function getAppealRecords($access_token, $illegal_record_id)
     {
         return $this->curl->post(UrlConfig::getAppealRecords . $access_token, json_encode(['illegal_record_id' => $illegal_record_id]));

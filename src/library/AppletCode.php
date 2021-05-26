@@ -79,9 +79,9 @@ class  AppletCode
      * @param $path         :指定二维码扫码后直接进入指定页面并可同时带上参数）
      * @return mixed
      */
-    public function getQrcode($access_token, $path)
+    public function getQrCode($access_token, $path)
     {
-        return $this->curl->get(UrlConfig::getQrcode . $access_token . '&path=' . urlencode($path));
+        return $this->curl->get(UrlConfig::getQrCode . $access_token . '&path=' . urlencode($path));
     }
 
     /**
