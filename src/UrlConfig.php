@@ -132,4 +132,9 @@ class UrlConfig
     //获取数据拉取配置|设置预拉取数据|设置周期性拉取数据
     public const fetchDataSetting = self::baseUrl . "/wxa/fetchdatasetting?access_token=";
 
+
+    //获取小程序违规处罚记录
+    public const getIllegalRecords = self::baseUrl . "/wxa/getillegalrecords?access_token=";
+    //获取小程序申诉记
+    public const getAppealRecords = self::baseUrl . "/wxa/getappealrecords?access_token=";
 }
