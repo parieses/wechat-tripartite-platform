@@ -46,4 +46,11 @@ library下IllegalAndAppeal
 [普通链接二维码与小程序码](https://developers.weixin.qq.com/doc/oplatform/Third-party_Platforms/2.0/api/qrcode/qrcodejumpget.html)
 library下QrCode.php
 
+[扫码关注组件](https://developers.weixin.qq.com/doc/oplatform/Third-party_Platforms/2.0/api/subscribe_component/subscribe_component.html)
+library下ConcernComponent
+
+
+[小程序类目管理接口](https://developers.weixin.qq.com/doc/oplatform/Third-party_Platforms/2.0/api/category/getallcategories.html)
+library下AppletCategory
+
 -使用方法课参见Test Receive TestCallBack 可统一由WeChatServer进行调用也可单独调用

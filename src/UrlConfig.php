@@ -192,4 +192,23 @@ class UrlConfig
     public const getWxaMpLinkForShow = self::baseUrl . "/wxa/getwxamplinkforshow?access_token=";
     //设置展示的公众号信息
     public const updateShowWxaItem = self::baseUrl . "/wxa/updateshowwxaitem?access_token=";
+
+    /**
+     * 小程序类目管理接口
+     */
+    //获取可以设置的所有类目
+    public const getAllCategories = self::baseUrl . "/cgi-bin/wxopen/getallcategories?access_token=";
+    //获取已设置的所有类目
+    public const getHasBeenSetCategory = self::baseUrl . "/cgi-bin/wxopen/getcategory?access_token=";
+    //获取不同主体类型的类目
+    public const getCategoriesByType = self::baseUrl . "/cgi-bin/wxopen/getcategoriesbytype?access_token=";
+    //添加类目
+    public const addCategory = self::baseUrl . "/cgi-bin/wxopen/addcategory?access_token=";
+    //删除类目
+    public const deleteCategory = self::baseUrl . "/cgi-bin/wxopen/deletecategory?access_token=";
+    //修改类目资质信息
+    public const modifyCategory = self::baseUrl . "/cgi-bin/wxopen/modifycategory?access_token=";
+    //获取审核时可填写的类目信息
+    public const getCategory = self::baseUrl . "/wxa/get_category?access_token=";
+
 }
