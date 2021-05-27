@@ -5,8 +5,7 @@ namespace WeChat\library;
 use WeChat\UrlConfig;
 
 /**
- * 小程序成员管理
- * Class AppletMember
+ * Class QrCode
  * @package WeChat\library
  */
 class  QrCode

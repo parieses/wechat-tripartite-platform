@@ -6,6 +6,7 @@ use WeChat\library\AppletCode;
 use WeChat\library\AppletMember;
 use WeChat\library\AppletTemplate;
 use WeChat\library\Authorization;
+use WeChat\library\ConcernComponent;
 use WeChat\library\OpenPlatform;
 use WeChat\library\QrCode;
 use WeChat\library\TrialApplet;
@@ -22,14 +23,15 @@ $token = 'xingfuli';
 //消息加解密Key
 $encodingAesKey = '1CD37E73D5D74B439A167DE3014FD882521XINGFULI';
 $weChat = new WeChatServer(Authorization::class, ['componentAppId' => $componentAppId, 'componentAppSecret' => $componentAppSecret, 'token' => $token, 'encodingAesKey' => $encodingAesKey]);
-$data = ['ticket' => '_zCjQSqpDSLnsov_Qn_uFwDpVKRlE_1pxkuwSQxpKmHTT-lztovsOFpCrhibMkPOwx1z81pWKOROHukXBYc0GA'];
+$data = ['ticket' => 'TDEkaTVE5n-OT_MAPjEr1lPDeYxqGlk-roL5R4cWrEfQp5Bp8CGGuiEAsuv3DBXhyMg3qR1W61yvedgdhxcbRQ'];
 //var_dump($weChat->exec('getComponentAccessToken',$data));
 //获取要操作的类
 $object = $weChat->getInstance();
 //$apiStartPushTicket = $object->apiStartPushTicket();
 //通过ticket 获取 获取令牌
 //$token = $object->apiComponentToken($data['ticket']);
-$component_access_token = "45_WTtTerXZ5fFGUjGk5Jm9ybnrKOkllFLbGeDhmySS64IT3WLYrY2Hjl0KVxXHPeLJsQk_IhunGbnSKPH7DUG5KJ3T3MqCOCW2UqR4B5O-aAuZkBN4tcve0_DRLaRhW9rA-8eaC_QZHMS2zKYgVSIgAAAKHX";//$token->component_access_token;
+//var_dump($token);die();
+$component_access_token = "45_-aiEr259R4fOA1os3TvKatvixcOsqiJKQWz5qcYNM-aE3qMkGBLe5kYKhodRfhacXQL6ucoHzVNNQjxePClHnv2yqb1Cqw5Hihse9maQ4qaTO_6hF6oAqSP-dfjrZyLZRNef0YudEqjTXp8AJBTbAJAXPH";//$token->component_access_token;
 //通过令牌获取预授权码
 //$PreauthCode = $object->apiCreatePreauthcode($component_access_token);
 //$PreauthCode  = preg_replace("/preauthcode@@@/", "", $PreauthCode->pre_auth_code);
@@ -49,11 +51,12 @@ $authorization_code = "tWaDFthTreq9M7jKOsrLhJycVkPZ1vcLqQRzJkUnxAAABqkb_RQAdsO0e
 //接口调用令牌（在授权的公众号/小程序具备 API 权限时，才有此返回值）
 //$authorizer_access_token  = $apiQueryAuth->authorization_info->authorizer_access_token;
 //var_dump($authorizer_access_token);die();
-$authorizer_access_token = "45_f2309pvVlGE69dNcYQDf15qzQjrHb2os7qq_hB0OZ6hoAu7NgcWYgUN-sL1kGYFP43eiDfAVTHwihzHKmI7PxVyPv_2Hu6YxO8wa1sx7Y778IEKCrvh9FVWavBK0DlaqShqwPlXROieH6ewVEOHcAMDPZS";
+$authorizer_access_token = "45_cJ0y-5qgODhwxOjXYkM5AKkiTTZlm5vypnnsQiIIkH-vBF1FM6E540-jUZ_VnOEY828ePliQfTf0tWjLI_6BAQLgcQjV65ZEcqtWexB_WXSDXAb0bQ4o5xlLhhS6lwJnpBDvmvbFb_LEWIl2IPHbALDLSK";
 //刷新令牌（在授权的公众号具备API权限时，才有此返回值），刷新令牌主要用于第三方平台获取和刷新已授权用户的 authorizer_access_token。一旦丢失，只能让用户重新授权，才能再次拿到新的刷新令牌。用户重新授权后，之前的刷新令牌会失效
 $authorizer_refresh_token ="oZrs5Gaw7ULyRGfCvlFgIbkclJPARh3B3cAr5VRubmE"; //$apiQueryAuth->authorization_info->authorizer_refresh_token;
 //通过刷新令牌 刷新接口调用令牌
 //$apiAuthorizerToken = $object->apiAuthorizerToken($component_access_token,"wx90721efca5d2c575",$authorizer_refresh_token);
+//var_dump($apiAuthorizerToken);die();
 //获取授权方帐号信息
 //$apiGetAuthorizerInfo = $object->apiGetAuthorizerInfo($token->component_access_token,$authorizer_appid);
 ////拉取所有已授权的帐号信息
@@ -83,11 +86,14 @@ $authorizer_refresh_token ="oZrs5Gaw7ULyRGfCvlFgIbkclJPARh3B3cAr5VRubmE"; //$api
 //var_dump($ViolationsAndComplaints->getIllegalRecords($authorizer_access_token));
 //var_dump($ViolationsAndComplaints->getAppealRecords($authorizer_access_token,1212));
 
-$QrCode = new QrCode();
+//$QrCode = new QrCode();
 //var_dump($QrCode->getWxaCode($authorizer_access_token,'page/index',430,false,null,false));
 //var_dump($QrCode->createWxaQrCode($authorizer_access_token,'/pages/loading/index'));
-
-
+//$TrialApplet = new TrialApplet();
+//var_dump($TrialApplet->fastRegisterBetaWeapp($component_access_token,'parise',"ogBjd4ptPLq2hk6tDNp5WYWuXfz0"));
+//"nDlRY11GrqojVvt-174UGych9SiyCPbiruQr_Uj_JBoRzTm2UJpIMTx5Dl_cVt7s"
+$ConcernComponent = new ConcernComponent();
+var_dump($ConcernComponent->getWxaMpLinkForShow($authorizer_access_token,0,20));
 
 
 

@@ -7,6 +7,9 @@ namespace WeChat;
 class UrlConfig
 {
     public const baseUrl = 'https://api.weixin.qq.com';
+    /**
+     * 授权相关接口|授权方账号管理接口
+     */
     //启动ticket推送服务
     public const apiStartPushTicket = self::baseUrl . "/cgi-bin/component/api_start_push_ticket";
     //获取令牌
@@ -33,6 +36,9 @@ class UrlConfig
     public const bindComponent = "https://mp.weixin.qq.com/safe/bindcomponent";
 
 
+    /**
+     * 开放平台接口
+     */
     //创建开放平台帐号并绑定公众号/小程序
     public const create = self::baseUrl . "/cgi-bin/open/create?access_token=";
     //将公众号/小程序绑定到开放平台帐号下
@@ -43,6 +49,9 @@ class UrlConfig
     public const get = self::baseUrl . "/cgi-bin/open/get?access_token=";
 
 
+    /**
+     * 试用小程序
+     */
     //创建试用小程序
     public const fastRegisterBetaWeapp = self::baseUrl . "/wxa/component/fastregisterbetaweapp?access_token=";
     //试用小程序快速认证
@@ -55,6 +64,9 @@ class UrlConfig
     public const mpVerifyBetaWeapp = self::baseUrl . "/wxa/mpverifybetaweapp?access_token=";
 
 
+    /**
+     * 小程序模板接口
+     */
     //获取代码草稿列表
     public const  getTemplateDraftList = self::baseUrl . "/wxa/gettemplatedraftlist?access_token=";
     //将草稿添加到代码模板库
@@ -65,6 +77,9 @@ class UrlConfig
     public const deleteTemplate = self::baseUrl . "/wxa/deletetemplate?access_token=";
 
 
+    /**
+     * 小程序成员管理接口
+     */
     //绑定微信用户为体验者
     public const bindTester = self::baseUrl . "/wxa/bind_tester?access_token=";
     //解除绑定体验者
@@ -73,6 +88,9 @@ class UrlConfig
     public const memberAuth = self::baseUrl . "/wxa/memberauth?access_token=";
 
 
+    /**
+     * 小程序代码管理接口
+     */
     //上传小程序代码
     public const commit = self::baseUrl . "/wxa/commit?access_token=";
     //获取已上传的代码的页面列表
@@ -109,6 +127,9 @@ class UrlConfig
     public const speedUpAudit = self::baseUrl . "/wxa/speedupaudit?access_token=";
 
 
+    /**
+     * 小程序基础信息设置接口
+     */
     //获取基本信息
     public const getAccountBasicInfo = self::baseUrl . "/cgi-bin/account/getaccountbasicinfo?access_token=";
     //设置服务器域名
@@ -139,6 +160,9 @@ class UrlConfig
     public const getAppealRecords = self::baseUrl . "/wxa/getappealrecords?access_token=";
 
 
+    /**
+     * 普通链接二维码与小程序码
+     */
     //获取已设置的二维码规则
     public const qrCodeJumpGet = self::baseUrl . "/cgi-bin/wxopen/qrcodejumpget?access_token=";
     //获取校验文件名称及内容
@@ -157,4 +181,15 @@ class UrlConfig
     public const getWxaCode = self::baseUrl . "/wxa/getwxacode?access_token=";
     //获取小程序二维码
     public const createWxaQrCode = self::baseUrl . "/cgi-bin/wxaapp/createwxaqrcode?access_token=";
+
+
+    /**
+     * 扫码关注组件
+     */
+    //获取展示的公众号信息
+    public const getShowWxaItem = self::baseUrl . "/wxa/getshowwxaitem?access_token=";
+    //获取可以用来设置的公众号列表
+    public const getWxaMpLinkForShow = self::baseUrl . "/wxa/getwxamplinkforshow?access_token=";
+    //设置展示的公众号信息
+    public const updateShowWxaItem = self::baseUrl . "/wxa/updateshowwxaitem?access_token=";
 }

@@ -6,6 +6,10 @@ use Curl\Curl;
 use DOMDocument;
 use WeChat\UrlConfig;
 
+/**
+ * Class TrialApplet
+ * @package WeChat\library
+ */
 class  TrialApplet
 
 {
