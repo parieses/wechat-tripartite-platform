@@ -16,13 +16,7 @@
   "minimum-stability": "stable",
   "require": {
     "php": ">7.0.0",
-    "php-curl-class/php-curl-class": "^9.0",
-    "ext-curl": "*",
-    "ext-json": "*",
-    "ext-dom": "*",
-    "ext-libxml": "*",
-    "ext-simplexml": "*",
-    "ext-openssl": "*"
+    "php-curl-class/php-curl-class": "^9.0"
   },
   "config": {
     "process-timeout": 1800

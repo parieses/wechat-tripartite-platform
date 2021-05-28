@@ -29,8 +29,9 @@ $data = ['ticket' => 'VQvSzbDq4FZxwJkS2N3uPZUrARIX0oqnuon6WA7bTSrV48wXFBbZYbPvTK
 $object = $weChat->getInstance();
 //$apiStartPushTicket = $object->apiStartPushTicket();
 //通过ticket 获取 获取令牌
-$token = $object->apiComponentToken($data['ticket']);
-$component_access_token = "45_JmWXxnY5egMQclnV1MZZ_fvR1xOuoDsLqBMJ_9XjymjpUn6l_6mkjYhdQO68r1IN71JQ-4sDBQNlrv_valrRyLWv4S4M-aw4SKqCSEfB0fNjmBy0LROYMezQAtlVYgDz4P-DlVz4wG8IK8arEXZeAAARKM";//$token->component_access_token;
+//$token = $object->apiComponentToken($data['ticket']);
+//var_dump($token);die();
+$component_access_token = "45_rxQayevVdX2DOleku5mxp4yD1P5tLNHPt7vwudYwP5LRNeHJRh5mlAWA4oWcxk4iLfSjQOFhA4fTkcEjIvL37ylpogFDskA5h2MV4AdLaP8MdwPV0ThNZAs_hlwZeE2EPqGn5LnUqwYHE_xCBIFgAEARYV";//$token->component_access_token;
 //通过令牌获取预授权码
 //$PreauthCode = $object->apiCreatePreauthcode($component_access_token);
 //$PreauthCode  = preg_replace("/preauthcode@@@/", "", $PreauthCode->pre_auth_code);
