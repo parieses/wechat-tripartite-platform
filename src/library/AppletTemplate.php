@@ -54,15 +54,16 @@ class  AppletTemplate
      * Date: 2021/5/25
      * Time: 10:45
      * Email:1695699447@qq.com
-     * @param $access_token :第三方平台令牌 component_access_token
-     * @param $draft_id     :草稿 ID
+     * @param     $access_token  :第三方平台令牌 component_access_token
+     * @param     $draft_id      :草稿 ID
+     * @param int $template_type :默认值是0，对应普通模板；可选1，对应标准模板库，关于标准模板库和普通模板库的区别可以查看小程序模板库介绍
      * @return mixed
      */
-    public function addToTemplate($access_token, $draft_id)
+    public function addToTemplate($access_token, $draft_id, $template_type = 0)
     {
         return $this->curl->post(
             UrlConfig::addToTemplate . $access_token,
-            json_encode(['draft_id' => $draft_id])
+            json_encode(['draft_id' => $draft_id, 'template_type' => $template_type])
         );
     }
 
@@ -79,10 +80,10 @@ class  AppletTemplate
      * @param $access_token :第三方平台令牌 component_access_token
      * @return mixed
      */
-    public function getTemplateList($access_token)
+    public function getTemplateList($access_token, $template_type = null)
     {
         return $this->curl->get(
-            UrlConfig::getTemplateList . $access_token
+            UrlConfig::getTemplateList . $access_token . '&template_type=' . $template_type
         );
     }
 
