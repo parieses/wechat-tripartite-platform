@@ -23,21 +23,20 @@ $token = 'xingfuli';
 //消息加解密Key
 $encodingAesKey = '1CD37E73D5D74B439A167DE3014FD882521XINGFULI';
 $weChat = new WeChatServer(Authorization::class, ['componentAppId' => $componentAppId, 'componentAppSecret' => $componentAppSecret, 'token' => $token, 'encodingAesKey' => $encodingAesKey]);
-$data = ['ticket' => 'VQvSzbDq4FZxwJkS2N3uPZUrARIX0oqnuon6WA7bTSrV48wXFBbZYbPvTKlvlrRnpiBU4jLtqZeHCS4yNAQ21A'];
+$data = ['ticket' => 'znki2rGXe30AWTWliIrpKBVxUNf-TOQQ-54RQrXqdCULxUOtlxksDlk0batVSuzL75xvz-cbpOnKPK1tlXsqqw'];
 //var_dump($weChat->exec('getComponentAccessToken',$data));
 //获取要操作的类
 $object = $weChat->getInstance();
 //$apiStartPushTicket = $object->apiStartPushTicket();
 //通过ticket 获取 获取令牌
 //$token = $object->apiComponentToken($data['ticket']);
-//var_dump($token);die();
-$component_access_token = "45_rxQayevVdX2DOleku5mxp4yD1P5tLNHPt7vwudYwP5LRNeHJRh5mlAWA4oWcxk4iLfSjQOFhA4fTkcEjIvL37ylpogFDskA5h2MV4AdLaP8MdwPV0ThNZAs_hlwZeE2EPqGn5LnUqwYHE_xCBIFgAEARYV";//$token->component_access_token;
+$component_access_token = "45_Ioxv51SCbMFM79FvqZ180l90ipZ3obFwp0AWKGvGamMKSym4iqlrw_1SeTVySyE-T84ksq1b_mdofWCxLFxERG4s44dxBv_Y6KwTm2MUTlFI7R-vxkHxwvo4zJZ78kdvYntdC0OSHCDLNjgmXHVaABATDR";//$token->component_access_token;
 //通过令牌获取预授权码
-//$PreauthCode = $object->apiCreatePreauthcode($component_access_token);
-//$PreauthCode  = preg_replace("/preauthcode@@@/", "", $PreauthCode->pre_auth_code);
+$PreauthCode = $object->apiCreatePreauthcode($component_access_token);
+$PreauthCode  = preg_replace("/preauthcode@@@/", "", $PreauthCode->pre_auth_code);
 //pc的授权页面
-//$page   = $object->componentLoginPage($PreauthCode,'http://member.cn1.utools.club/TestCallBack.php',2);
-//echo "<a href=\"{$page}\">PC</a>";die();
+$page   = $object->componentLoginPage($PreauthCode,'http://member.cn1.utools.club/TestCallBack.php',2);
+echo "<a href=\"{$page}\">PC</a>";die();
 //移动的授权页面
 //$page   = $object->bindComponent($PreauthCode,'http://member.cn1.utools.club/TestCallBack.php',2);
 //echo "<a href=\"{$page}\">移动</a>";
@@ -55,8 +54,8 @@ $authorizer_access_token = "45_PIxgr29nZQQexiHOfboI5lymu1akPz-kSIuBHu1i4mBZyycHC
 //刷新令牌（在授权的公众号具备API权限时，才有此返回值），刷新令牌主要用于第三方平台获取和刷新已授权用户的 authorizer_access_token。一旦丢失，只能让用户重新授权，才能再次拿到新的刷新令牌。用户重新授权后，之前的刷新令牌会失效
 $authorizer_refresh_token = "oZrs5Gaw7ULyRGfCvlFgIbkclJPARh3B3cAr5VRubmE";                                                                                                                //$apiQueryAuth->authorization_info->authorizer_refresh_token;
 //通过刷新令牌 刷新接口调用令牌
-//$apiAuthorizerToken = $object->apiAuthorizerToken($component_access_token,"wx90721efca5d2c575",$authorizer_refresh_token);
-//var_dump($apiAuthorizerToken);die();
+$apiAuthorizerToken = $object->apiAuthorizerToken($component_access_token,"wx90721efca5d2c575",$authorizer_refresh_token);
+var_dump($apiAuthorizerToken);die();
 //获取授权方帐号信息
 //$apiGetAuthorizerInfo = $object->apiGetAuthorizerInfo($token->component_access_token,$authorizer_appid);
 ////拉取所有已授权的帐号信息

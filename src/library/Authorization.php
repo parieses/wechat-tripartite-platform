@@ -57,7 +57,7 @@ class Authorization
      */
     public function getTicket($msg_signature, $timestamp, $nonce, $encryptMsg)
     {
-        $pc = new WXBizMsgCrypt($this->token, $this->encodingAesKey, $this->componentAppId);
+        $pc = new wxBizMsgCrypt($this->token, $this->encodingAesKey, $this->componentAppId);
         $xml_tree = new DOMDocument();
         $xml_tree->loadXML($encryptMsg);
         $array_e = $xml_tree->getElementsByTagName('Encrypt');
