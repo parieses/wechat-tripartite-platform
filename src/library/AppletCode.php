@@ -194,7 +194,7 @@ class  AppletCode
      */
     public function release($access_token)
     {
-        return $this->curl->post(UrlConfig::release . $access_token, json_encode([]));
+        return $this->curl->post(UrlConfig::release . $access_token, "{}");
     }
 
     /**

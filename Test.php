@@ -32,11 +32,11 @@ $object = $weChat->getInstance();
 //$token = $object->apiComponentToken($data['ticket']);
 $component_access_token = "45_Ioxv51SCbMFM79FvqZ180l90ipZ3obFwp0AWKGvGamMKSym4iqlrw_1SeTVySyE-T84ksq1b_mdofWCxLFxERG4s44dxBv_Y6KwTm2MUTlFI7R-vxkHxwvo4zJZ78kdvYntdC0OSHCDLNjgmXHVaABATDR";//$token->component_access_token;
 //通过令牌获取预授权码
-$PreauthCode = $object->apiCreatePreauthcode($component_access_token);
-$PreauthCode  = preg_replace("/preauthcode@@@/", "", $PreauthCode->pre_auth_code);
+//$PreauthCode = $object->apiCreatePreauthcode($component_access_token);
+//$PreauthCode  = preg_replace("/preauthcode@@@/", "", $PreauthCode->pre_auth_code);
 //pc的授权页面
-$page   = $object->componentLoginPage($PreauthCode,'http://member.cn1.utools.club/TestCallBack.php',2);
-echo "<a href=\"{$page}\">PC</a>";die();
+//$page   = $object->componentLoginPage($PreauthCode,'http://member.cn1.utools.club/TestCallBack.php',2);
+//echo "<a href=\"{$page}\">PC</a>";die();
 //移动的授权页面
 //$page   = $object->bindComponent($PreauthCode,'http://member.cn1.utools.club/TestCallBack.php',2);
 //echo "<a href=\"{$page}\">移动</a>";
@@ -50,12 +50,12 @@ $authorization_code = "tWaDFthTreq9M7jKOsrLhJycVkPZ1vcLqQRzJkUnxAAABqkb_RQAdsO0e
 //接口调用令牌（在授权的公众号/小程序具备 API 权限时，才有此返回值）
 //$authorizer_access_token  = $apiQueryAuth->authorization_info->authorizer_access_token;
 //var_dump($authorizer_access_token);die();
-$authorizer_access_token = "45_PIxgr29nZQQexiHOfboI5lymu1akPz-kSIuBHu1i4mBZyycHC1t-bIaUb2wRh_D6NrcasdMEm0AVpWUzHfBtdBA_aoqqSfezdC8cjrUf68d2eABM5UIYoLzRACiD8XJrXvHSMDd5xrxg61fMIEMiAMDPLT";
+$authorizer_access_token = "45_QdBqJ_KzrBjKfyZFj_inVDkSkMqAi2jbtQ025h5PLZNPz29J_srWAaQTN0nXziRi3KwVmFyAQTGqSmCZ4aPieJOw4IoZun3PvzsiYydnF-Sr0vC91LP9E9wM2LekM6WqEVzmivyOs7N2P-o4QYLjAIDDLY";
 //刷新令牌（在授权的公众号具备API权限时，才有此返回值），刷新令牌主要用于第三方平台获取和刷新已授权用户的 authorizer_access_token。一旦丢失，只能让用户重新授权，才能再次拿到新的刷新令牌。用户重新授权后，之前的刷新令牌会失效
-$authorizer_refresh_token = "oZrs5Gaw7ULyRGfCvlFgIbkclJPARh3B3cAr5VRubmE";                                                                                                                //$apiQueryAuth->authorization_info->authorizer_refresh_token;
+//$authorizer_refresh_token = "oZrs5Gaw7ULyRGfCvlFgIbkclJPARh3B3cAr5VRubmE";                                                                                                                //$apiQueryAuth->authorization_info->authorizer_refresh_token;
 //通过刷新令牌 刷新接口调用令牌
-$apiAuthorizerToken = $object->apiAuthorizerToken($component_access_token,"wx90721efca5d2c575",$authorizer_refresh_token);
-var_dump($apiAuthorizerToken);die();
+//$apiAuthorizerToken = $object->apiAuthorizerToken($component_access_token,"wx90721efca5d2c575",$authorizer_refresh_token);
+//var_dump($apiAuthorizerToken);die();
 //获取授权方帐号信息
 //$apiGetAuthorizerInfo = $object->apiGetAuthorizerInfo($token->component_access_token,$authorizer_appid);
 ////拉取所有已授权的帐号信息
@@ -97,7 +97,10 @@ $AppletCategory = new \WeChat\library\AppletCategory();
 //var_dump($AppletCategory->getHasBeenSetCategory($authorizer_access_token));
 
 //var_dump($AppletCategory->getCategoriesByType($authorizer_access_token,1));
-var_dump($AppletCategory->getCategory($authorizer_access_token));
+//var_dump($AppletCategory->getCategory($authorizer_access_token));
+var_dump((new AppletCode())->release($authorizer_access_token));
+
+
 
 
 
