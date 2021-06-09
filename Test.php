@@ -93,12 +93,12 @@ $authorizer_access_token = "45_QdBqJ_KzrBjKfyZFj_inVDkSkMqAi2jbtQ025h5PLZNPz29J_
 //"nDlRY11GrqojVvt-174UGych9SiyCPbiruQr_Uj_JBoRzTm2UJpIMTx5Dl_cVt7s"
 //$ConcernComponent = new ConcernComponent();
 //var_dump($ConcernComponent->getWxaMpLinkForShow($authorizer_access_token,0,20));
-$AppletCategory = new \WeChat\library\AppletCategory();
+//$AppletCategory = new \WeChat\library\AppletCategory();
 //var_dump($AppletCategory->getHasBeenSetCategory($authorizer_access_token));
 
 //var_dump($AppletCategory->getCategoriesByType($authorizer_access_token,1));
 //var_dump($AppletCategory->getCategory($authorizer_access_token));
-var_dump((new AppletCode())->release($authorizer_access_token));
+//var_dump((new AppletCode())->release($authorizer_access_token));
 
 
 

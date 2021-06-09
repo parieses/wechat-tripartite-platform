@@ -69,9 +69,19 @@ class Authorization
         if ($errCode == 0) {
             $xml = new DOMDocument();
             $xml->loadXML($message);
-            $array_e = $xml->getElementsByTagName('ComponentVerifyTicket');
-            $component_verify_ticket = preg_replace("/ticket@@@/", "", $array_e->item(0)->nodeValue);//处理解密后的字符串
-            return $component_verify_ticket;
+            $infoType = $xml->getElementsByTagName('InfoType')->item(0)->nodeValue;
+            $data = ['type' => $infoType];
+            switch ($infoType) {
+                case "component_verify_ticket":
+                    $componentVerifyTicket = $xml->getElementsByTagName('ComponentVerifyTicket')->item(0)->nodeValue;
+                    $component_verify_ticket = preg_replace("/ticket@@@/", "", $componentVerifyTicket);//处理解密后的字符串
+                    $data['data'] = $component_verify_ticket;
+                    break;
+                default:
+                    $data['data'] = $xml->getElementsByTagName('AuthorizerAppid')->item(0)->nodeValue;
+                    break;
+            }
+            return $data;
         }
         return false;
     }
