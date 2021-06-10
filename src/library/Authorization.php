@@ -40,10 +40,10 @@ class Authorization
     }
 
     /**
-     * 获取验证票据
+     * 授权事件接收
      * Created by Mr.亮先生.
      * program: Wechat_Tripartite_Platform
-     * FuncName:getTicket
+     * FuncName:getAuthorizationEvents
      * status:
      * User: Mr.liang
      * Date: 2021/5/24
@@ -55,18 +55,10 @@ class Authorization
      * @param $encryptMsg    :微信推送获取的加密xml
      * @return bool|string|string[]|null
      */
-    public function getTicket($msg_signature, $timestamp, $nonce, $encryptMsg)
+    public function getAuthorizationEvents($msg_signature, $timestamp, $nonce, $encryptMsg)
     {
-        $pc = new wxBizMsgCrypt($this->token, $this->encodingAesKey, $this->componentAppId);
-        $xml_tree = new DOMDocument();
-        $xml_tree->loadXML($encryptMsg);
-        $array_e = $xml_tree->getElementsByTagName('Encrypt');
-        $encrypt = $array_e->item(0)->nodeValue;
-        $format = "<xml><ToUserName><![CDATA[toUser]]></ToUserName><Encrypt><![CDATA[%s]]></Encrypt></xml>";
-        $from_xml = sprintf($format, $encrypt);
-        $message = '';
-        $errCode = $pc->decryptMsg($msg_signature, $timestamp, $nonce, $from_xml, $message);
-        if ($errCode == 0) {
+        $message = $this->getDecryptMsg($msg_signature, $timestamp, $nonce, $encryptMsg);
+        if ($message !== false) {
             $xml = new DOMDocument();
             $xml->loadXML($message);
             $infoType = $xml->getElementsByTagName('InfoType')->item(0)->nodeValue;
@@ -255,7 +247,7 @@ class Authorization
     {
         return $this->curl->post(
             UrlConfig::apiGetAuthorizerInfo . $component_access_token,
-            json_encode(['component_appid' => $this->componentAppId, 'authorizer_appid' => $authorizer_appid, 'component_appid' => $this->componentAppId])
+            json_encode(['component_appid' => $this->componentAppId, 'authorizer_appid' => $authorizer_appid])
         );
     }
 
@@ -329,4 +321,39 @@ class Authorization
         );
     }
 
+    /**
+     * 消息与事件接收
+     * Created by Mr.亮先生.
+     * program: wechat-tripartite-platform
+     * FuncName:getMessagesAndEvents
+     * status:
+     * User: Mr.liang
+     * Date: 2021/6/10
+     * Time: 11:19
+     * Email:1695699447@qq.com
+     * @param $msg_signature
+     * @param $timestamp
+     * @param $nonce
+     * @param $encryptMsg
+     * @return bool|string
+     */
+    public function getMessagesAndEvents($msg_signature, $timestamp, $nonce, $encryptMsg)
+    {
+        $message = $this->getDecryptMsg($msg_signature, $timestamp, $nonce, $encryptMsg);
+        return $message;
+    }
+
+    private function getDecryptMsg($msg_signature, $timestamp, $nonce, $encryptMsg)
+    {
+        $pc = new wxBizMsgCrypt($this->token, $this->encodingAesKey, $this->componentAppId);
+        $xml_tree = new DOMDocument();
+        $xml_tree->loadXML($encryptMsg);
+        $array_e = $xml_tree->getElementsByTagName('Encrypt');
+        $encrypt = $array_e->item(0)->nodeValue;
+        $format = "<xml><ToUserName><![CDATA[toUser]]></ToUserName><Encrypt><![CDATA[%s]]></Encrypt></xml>";
+        $from_xml = sprintf($format, $encrypt);
+        $message = '';
+        $errCode = $pc->decryptMsg($msg_signature, $timestamp, $nonce, $from_xml, $message);
+        return $errCode == 0 ? $message : false;
+    }
 }

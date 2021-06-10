@@ -20,7 +20,7 @@ $msg = file_get_contents("php://input");
 file_put_contents('Receive.txt', $msg . PHP_EOL,FILE_APPEND);
 $weChat = new WeChatServer(Authorization::class, ['componentAppId' => $componentAppId, 'componentAppSecret' => $componentAppSecret, 'token' => $token, 'encodingAesKey' => $encodingAesKey]);
 $object = $weChat->getInstance();
-$ticket = $object->getTicket($msg_signature, $timestamp, $nonce, $msg);
+$ticket = $object->getAuthorizationEvents($msg_signature, $timestamp, $nonce, $msg);
 file_put_contents('Receive.txt', json_encode($ticket) . PHP_EOL,FILE_APPEND);
 echo 'success';
 

@@ -18,7 +18,9 @@
     "php": ">7.0.0",
     "php-curl-class/php-curl-class": "^9.0",
     "ext-json": "*",
-    "ext-dom": "*"
+    "ext-dom": "*",
+    "ext-openssl": "*",
+    "ext-simplexml": "*"
   },
   "config": {
     "process-timeout": 1800

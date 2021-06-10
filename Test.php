@@ -57,7 +57,9 @@ $authorizer_access_token = "45_QdBqJ_KzrBjKfyZFj_inVDkSkMqAi2jbtQ025h5PLZNPz29J_
 //$apiAuthorizerToken = $object->apiAuthorizerToken($component_access_token,"wx90721efca5d2c575",$authorizer_refresh_token);
 //var_dump($apiAuthorizerToken);die();
 //获取授权方帐号信息
-//$apiGetAuthorizerInfo = $object->apiGetAuthorizerInfo($token->component_access_token,$authorizer_appid);
+$component_access_token = "45_v3XXYi4cpzIQtzKjEd10rV5UjvIEJvjueW82sAZ4rvJU2WMCHb1E5uWUeHe2BUx2lbRjQRsRkYIb77uKoTyJAa57LCFHWOm13NCWp9umuq6NeY6WfLpdZm9DeP8vbwl_vLe_mnlpHMTwva3SAKFaAHAMWR";
+//$apiGetAuthorizerInfo = $object->apiGetAuthorizerInfo($component_access_token,'wx5d675bbbb9d91d47');
+//var_dump($apiGetAuthorizerInfo->authorizer_info->verify_type_info->id);die();
 ////拉取所有已授权的帐号信息
 //$api_get_authorizer_list = $object->api_get_authorizer_list($token->component_access_token);
 //获取授权方选项信息
@@ -101,9 +103,16 @@ $authorizer_access_token = "45_QdBqJ_KzrBjKfyZFj_inVDkSkMqAi2jbtQ025h5PLZNPz29J_
 //var_dump((new AppletCode())->release($authorizer_access_token));
 
 
-
-
-
+//消息与事件接收
+$msg = "<xml>
+    <ToUserName><![CDATA[gh_bb2cfe4d43a7]]></ToUserName>
+    <Encrypt><![CDATA[2Z8Ncq5FXKBdH67EJWpvFjTjU4BftvY8zOniymwJeIVaAo8QtjYVHMaouyhOSYaFZBv2rM87OfFdSMA0a9d0e9GOD3TVHBw/Xabk/HWfokSyVKHPh0PrS+JwDtjYV4efd3nbDxCWT7HK0xPtcToPN+YANDMuJlgNCIf77KpwfO3BK3p6oO86plMh1YnnCh/ShWAusf5+uxJPclZkQNCnqFH41tAe7rFlq8IaugKR90wbLkJV4FXDdovTa3EYm9MnFd6JqzGi4CTgoM1Jidcz/I7+AYltDyj8XTGMMB4avP5GVq2+VLdiLYDuWBdpMossgcO9Ncu5AKxKt7tSL1nlrqxiuN9i2Ife0/P4YkbhFjJi7untLvVdTwbeT27zrBsDpXm7GOmogfNgRRrjnmfNenqnMUlLElKDH2gowHU4fPyAxMPLzY3X5siuUASWwE5F9+jTRYhIR2HcFfnkHgQm1Q==]]></Encrypt>
+</xml>";
+$msg_signature  ="f08306c1581fcb4294245164b07cc7bb49d9f8ba";
+$nonce  ="520854575";
+$timestamp ="1623292982";
+$ticket = $object->getMessagesAndEvents($msg_signature, $timestamp, $nonce, $msg);
+var_dump($ticket);
 
 
 
