@@ -53,4 +53,7 @@ library下ConcernComponent
 [小程序类目管理接口](https://developers.weixin.qq.com/doc/oplatform/Third-party_Platforms/2.0/api/category/getallcategories.html)
 library下AppletCategory
 
+[其他小程序业务接口|其他小程序相关接口](https://developers.weixin.qq.com/doc/oplatform/Third-party_Platforms/2.0/api/Business/SubcribeMessage.html)
+library下OtherApplet 未更新完毕
+
 -使用方法课参见Test Receive TestCallBack 可统一由WeChatServer进行调用也可单独调用

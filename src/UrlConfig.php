@@ -211,4 +211,34 @@ class UrlConfig
     //获取审核时可填写的类目信息
     public const getCategory = self::baseUrl . "/wxa/get_category?access_token=";
 
+    /**
+     * 其他小程序相关接口
+     */
+    //小程序登录
+    public const jsCode2session = self::baseUrl . '/sns/component/jscode2session?appid=%1$s&js_code=%2$s&grant_type=authorization_code&component_appid=%3$s&component_access_token=%4$s';
+    //支付后获取用户 Unionid 接口 微信订单号
+    public const getPaidUnionIdOne = self::baseUrl . '/wxa/getpaidunionid?access_token=%1$s&openid=%2$s&transaction_id=%3$s';
+    //支付后获取用户 Unionid 接口 商户订单号：
+    public const getPaidUnionIdTwo = self::baseUrl . '/wxa/getpaidunionid?access_token=%1$s&openid=OPENID&mch_id=%3$s&out_trade_no=%4$s';
+    /**
+     * 其他小程序业务接口
+     */
+    //获取 URL Link
+    public const generateUrlLink = self::baseUrl . "/wxa/generate_urllink?access_token=";
+    //获取小程序scheme码
+    public const generateScheme = self::baseUrl . "/wxa/generatescheme?access_token=";
+    //订阅消息-获取当前帐号所设置的类目信息
+    public const subscribeMessageGetCategory = self::baseUrl . "/wxaapi/newtmpl/getcategory?access_token=";
+    //订阅消息-获取模板标题列表
+    public const getPubTemplateTitles = self::baseUrl . '/wxaapi/newtmpl/getpubtemplatetitles?access_token=%1$s&ids=%2$s&start=%3$s&limit=%4$s';
+    //订阅消息-获取模板标题下的关键词库
+    public const getPubTemplateKeywords = self::baseUrl . '/wxaapi/newtmpl/getpubtemplatekeywords?access_token=%1$s&tid=%2$s';
+    //订阅消息-组合模板并添加到个人模板库
+    public const addTemplate = self::baseUrl . '/wxaapi/newtmpl/addtemplate?access_token=';
+    //订阅消息-获取帐号下的模板列表
+    public const getTemplate = self::baseUrl . '/wxaapi/newtmpl/gettemplate?access_token=';
+    //订阅消息-删除帐号下的某个模板
+    public const delTemplate = self::baseUrl . '/wxaapi/newtmpl/deltemplate?access_token=';
+    //订阅消息-发送订阅消息
+    public const send = self::baseUrl . '/cgi-bin/message/subscribe/send?access_token=';
 }

@@ -8,6 +8,7 @@ use WeChat\library\AppletTemplate;
 use WeChat\library\Authorization;
 use WeChat\library\ConcernComponent;
 use WeChat\library\OpenPlatform;
+use WeChat\library\OtherApplet;
 use WeChat\library\QrCode;
 use WeChat\library\TrialApplet;
 use WeChat\library\IllegalAndAppeal;
@@ -104,15 +105,28 @@ $component_access_token = "45_v3XXYi4cpzIQtzKjEd10rV5UjvIEJvjueW82sAZ4rvJU2WMCHb
 
 
 //消息与事件接收
-$msg = "<xml>
-    <ToUserName><![CDATA[gh_bb2cfe4d43a7]]></ToUserName>
-    <Encrypt><![CDATA[2Z8Ncq5FXKBdH67EJWpvFjTjU4BftvY8zOniymwJeIVaAo8QtjYVHMaouyhOSYaFZBv2rM87OfFdSMA0a9d0e9GOD3TVHBw/Xabk/HWfokSyVKHPh0PrS+JwDtjYV4efd3nbDxCWT7HK0xPtcToPN+YANDMuJlgNCIf77KpwfO3BK3p6oO86plMh1YnnCh/ShWAusf5+uxJPclZkQNCnqFH41tAe7rFlq8IaugKR90wbLkJV4FXDdovTa3EYm9MnFd6JqzGi4CTgoM1Jidcz/I7+AYltDyj8XTGMMB4avP5GVq2+VLdiLYDuWBdpMossgcO9Ncu5AKxKt7tSL1nlrqxiuN9i2Ife0/P4YkbhFjJi7untLvVdTwbeT27zrBsDpXm7GOmogfNgRRrjnmfNenqnMUlLElKDH2gowHU4fPyAxMPLzY3X5siuUASWwE5F9+jTRYhIR2HcFfnkHgQm1Q==]]></Encrypt>
-</xml>";
-$msg_signature  ="f08306c1581fcb4294245164b07cc7bb49d9f8ba";
-$nonce  ="520854575";
-$timestamp ="1623292982";
-$ticket = $object->getMessagesAndEvents($msg_signature, $timestamp, $nonce, $msg);
-var_dump($ticket);
+//$msg = "<xml>
+//    <ToUserName><![CDATA[gh_bb2cfe4d43a7]]></ToUserName>
+//    <Encrypt><![CDATA[2Z8Ncq5FXKBdH67EJWpvFjTjU4BftvY8zOniymwJeIVaAo8QtjYVHMaouyhOSYaFZBv2rM87OfFdSMA0a9d0e9GOD3TVHBw/Xabk/HWfokSyVKHPh0PrS+JwDtjYV4efd3nbDxCWT7HK0xPtcToPN+YANDMuJlgNCIf77KpwfO3BK3p6oO86plMh1YnnCh/ShWAusf5+uxJPclZkQNCnqFH41tAe7rFlq8IaugKR90wbLkJV4FXDdovTa3EYm9MnFd6JqzGi4CTgoM1Jidcz/I7+AYltDyj8XTGMMB4avP5GVq2+VLdiLYDuWBdpMossgcO9Ncu5AKxKt7tSL1nlrqxiuN9i2Ife0/P4YkbhFjJi7untLvVdTwbeT27zrBsDpXm7GOmogfNgRRrjnmfNenqnMUlLElKDH2gowHU4fPyAxMPLzY3X5siuUASWwE5F9+jTRYhIR2HcFfnkHgQm1Q==]]></Encrypt>
+//</xml>";
+//$msg_signature  ="f08306c1581fcb4294245164b07cc7bb49d9f8ba";
+//$nonce  ="520854575";
+//$timestamp ="1623292982";
+//$ticket = $object->getMessagesAndEvents($msg_signature, $timestamp, $nonce, $msg);
+//var_dump($ticket);
 
 
 
+//$str = (new OtherApplet)->jsCode2session('wx90721efca5d2c575','071eHDFa1cJqcB0FITHa1LB1Xm3eHDFo',$componentAppId,'45_fjn9bblV-YwDfDV3bpu2nfXFLetpNbCwnSMHFUi1L0XAFxx76HpQ3Wgn0zJj6vL23kjWO5olbdgPRnXv67sd8-eTVnf7ixnap-Nzk8VrZfLlUXTHkMXlRsAkT91A_xMVck-zSoYEnwjtWP8pVHFjACAGSQ');
+//var_dump($str);
+
+$otherApplet = new OtherApplet();
+$token = '45_TjkPHTCbFNd6l2kPefHIMbJ60coqnA1NdQn2303bXnoeSGhIPPlBrPPddzBs2C7t6LB5yZALdBjoCFP25aJj_xY6O4L29QnruuZpZwbx2303zKvD5kcCj9bM3aHSQozV6eqXmyZ_Ed2yYvWxOTZdADDXCI';
+//$generateUrlLink = $otherApplet->generateUrlLink('45_TjkPHTCbFNd6l2kPefHIMbJ60coqnA1NdQn2303bXnoeSGhIPPlBrPPddzBs2C7t6LB5yZALdBjoCFP25aJj_xY6O4L29QnruuZpZwbx2303zKvD5kcCj9bM3aHSQozV6eqXmyZ_Ed2yYvWxOTZdADDXCI','','',1,0,1);
+//var_dump($generateUrlLink);
+//$generateScheme = $otherApplet->generateScheme();
+//var_dump($generateScheme);
+//var_dump($otherApplet->subscribeMessageGetCategory($token));
+//var_dump($otherApplet->getPubTemplateTitles($token,682));
+//var_dump($otherApplet->getPubTemplateKeywords($token,3382));
+var_dump($otherApplet->getTemplate($token));

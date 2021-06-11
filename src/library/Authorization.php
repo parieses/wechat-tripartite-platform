@@ -331,10 +331,10 @@ class Authorization
      * Date: 2021/6/10
      * Time: 11:19
      * Email:1695699447@qq.com
-     * @param $msg_signature
-     * @param $timestamp
-     * @param $nonce
-     * @param $encryptMsg
+     * @param $msg_signature :微信推送获取的验证串
+     * @param $timestamp     :微信推送获取的时间戳
+     * @param $nonce         :微信推送获取的随机数
+     * @param $encryptMsg    :微信推送获取的加密xml
      * @return bool|string
      */
     public function getMessagesAndEvents($msg_signature, $timestamp, $nonce, $encryptMsg)
@@ -343,6 +343,22 @@ class Authorization
         return $message;
     }
 
+    /**
+     * 统一解密
+     * Created by Mr.亮先生.
+     * program: wechat-tripartite-platform
+     * FuncName:getDecryptMsg
+     * status:
+     * User: Mr.liang
+     * Date: 2021/6/10
+     * Time: 11:51
+     * Email:1695699447@qq.com
+     * @param $msg_signature
+     * @param $timestamp
+     * @param $nonce
+     * @param $encryptMsg
+     * @return bool|string
+     */
     private function getDecryptMsg($msg_signature, $timestamp, $nonce, $encryptMsg)
     {
         $pc = new wxBizMsgCrypt($this->token, $this->encodingAesKey, $this->componentAppId);
