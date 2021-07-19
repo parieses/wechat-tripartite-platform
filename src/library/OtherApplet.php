@@ -291,4 +291,71 @@ class  OtherApplet
             json_encode(['touser' => $touser, 'template_id' => $template_id, 'data' => $data, 'page' => $page, 'miniprogram_state' => $miniprogram_state, 'lang' => $lang])
         );
     }
+
+    /**
+     * 发送客服消息给用户
+     * Created by Mr.亮先生.
+     * program: wechat-tripartite-platform
+     * FuncName:customerServiceMessage
+     * status:
+     * User: Mr.liang
+     * Date: 2021/7/19
+     * Time: 10:51
+     * Email:1695699447@qq.com
+     * @param $access_token :接口调用凭证
+     * @param $touser       :用户的 OpenID
+     * @param $msgtype      :消息类型
+     * @param $object       :每个类型的数据的结构https://developers.weixin.qq.com/miniprogram/dev/api-backend/open-api/customer-message/customerServiceMessage.send.html
+     * @return mixed
+     */
+    public function customerMessageSend($access_token, $touser, $msgtype, $object)
+    {
+        return $this->curl->post(
+            UrlConfig::customerMessageSend . $access_token,
+            json_encode(['touser' => $touser, 'msgtype' => $msgtype, $msgtype => $Object])
+        );
+    }
+
+    /**
+     * 下发客服当前输入状态给用户
+     * Created by Mr.亮先生.
+     * program: wechat-tripartite-platform
+     * FuncName:customerMessageSetTyping
+     * status:
+     * User: Mr.liang
+     * Date: 2021/7/19
+     * Time: 11:05
+     * Email:1695699447@qq.com
+     * @param $access_token :接口调用凭证
+     * @param $touser       :用户的 OpenID
+     * @param $command      :命令 Typing:对用户下发"正在输入"状态 CancelTyping:取消对用户的"正在输入"状态
+     * @return mixed
+     */
+    public function customerMessageSetTyping($access_token, $touser, $command)
+    {
+        return $this->curl->post(
+            UrlConfig::customerMessageSetTyping . $access_token,
+            json_encode(['touser' => $touser, 'command' => $command])
+        );
+    }
+
+    /**
+     * 获取客服消息内的临时素材
+     * Created by Mr.亮先生.
+     * program: wechat-tripartite-platform
+     * FuncName:customerMessageGetTempMedia
+     * status:
+     * User: Mr.liang
+     * Date: 2021/7/19
+     * Time: 11:09
+     * Email:1695699447@qq.com
+     * @param $access_token :接口调用凭证
+     * @param $media_id     :媒体文件 ID
+     * @return mixed
+     */
+    public function customerMessageGetTempMedia($access_token, $media_id)
+    {
+        $url = sprintf(UrlConfig::customerMessageGetTempMedia, $access_token, $media_id);
+        return $this->curl->get($url);
+    }
 }

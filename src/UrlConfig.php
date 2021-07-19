@@ -241,4 +241,12 @@ class UrlConfig
     public const delTemplate = self::baseUrl . '/wxaapi/newtmpl/deltemplate?access_token=';
     //订阅消息-发送订阅消息
     public const send = self::baseUrl . '/cgi-bin/message/subscribe/send?access_token=';
+    //客服消息-发送消息
+    public const customerMessageSend = self::baseUrl . '/cgi-bin/message/subscribe/send?access_token=';
+    //客服消息-获取客服输入状态
+    public const customerMessageSetTyping = self::baseUrl . '/cgi-bin/message/custom/typing?access_token=';
+    //客服消息-获取客服消息内的临时素材
+    public const customerMessageGetTempMedia = self::baseUrl . '/cgi-bin/message/custom/typing?access_token=%1$s&media_id=%2$s';
+
+
 }
