@@ -312,7 +312,7 @@ class  OtherApplet
     {
         return $this->curl->post(
             UrlConfig::customerMessageSend . $access_token,
-            json_encode(['touser' => $touser, 'msgtype' => $msgtype, $msgtype => $Object])
+            json_encode(['touser' => $touser, 'msgtype' => $msgtype, $msgtype => $object])
         );
     }
 
