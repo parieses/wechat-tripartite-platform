@@ -20,8 +20,21 @@
     "ext-json": "*",
     "ext-dom": "*",
     "ext-openssl": "*",
-    "ext-simplexml": "*"
+    "ext-simplexml": "*",
+    "guzzlehttp/guzzle": "^6.5",
+    "wechatpay/wechatpay": "^1.4"
   },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://mirrors.aliyun.com/composer/"
+    },
+    {
+      "type": "composer",
+      "url": "https://packagist.phpcomposer.com"
+    },
+    {"packagist": false}
+  ],
   "config": {
     "process-timeout": 1800
   },

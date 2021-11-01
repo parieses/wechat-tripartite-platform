@@ -9,10 +9,15 @@ use WeChat\library\Authorization;
 use WeChat\library\ConcernComponent;
 use WeChat\library\OpenPlatform;
 use WeChat\library\OtherApplet;
+use WeChat\library\Pay;
 use WeChat\library\QrCode;
 use WeChat\library\TrialApplet;
 use WeChat\library\IllegalAndAppeal;
+use WeChat\UrlConfig;
 use WeChat\WeChatServer;
+use WeChatPay\Builder;
+use WeChatPay\Crypto\Rsa;
+use WeChatPay\Util\PemUtil;
 
 require __DIR__ . '/vendor/autoload.php';
 
@@ -116,12 +121,11 @@ $component_access_token = "45_v3XXYi4cpzIQtzKjEd10rV5UjvIEJvjueW82sAZ4rvJU2WMCHb
 //var_dump($ticket);
 
 
-
 //$str = (new OtherApplet)->jsCode2session('wx90721efca5d2c575','071eHDFa1cJqcB0FITHa1LB1Xm3eHDFo',$componentAppId,'45_fjn9bblV-YwDfDV3bpu2nfXFLetpNbCwnSMHFUi1L0XAFxx76HpQ3Wgn0zJj6vL23kjWO5olbdgPRnXv67sd8-eTVnf7ixnap-Nzk8VrZfLlUXTHkMXlRsAkT91A_xMVck-zSoYEnwjtWP8pVHFjACAGSQ');
 //var_dump($str);
 
-$otherApplet = new OtherApplet();
-$token = '45_TjkPHTCbFNd6l2kPefHIMbJ60coqnA1NdQn2303bXnoeSGhIPPlBrPPddzBs2C7t6LB5yZALdBjoCFP25aJj_xY6O4L29QnruuZpZwbx2303zKvD5kcCj9bM3aHSQozV6eqXmyZ_Ed2yYvWxOTZdADDXCI';
+//$otherApplet = new OtherApplet();
+//$token = '45_TjkPHTCbFNd6l2kPefHIMbJ60coqnA1NdQn2303bXnoeSGhIPPlBrPPddzBs2C7t6LB5yZALdBjoCFP25aJj_xY6O4L29QnruuZpZwbx2303zKvD5kcCj9bM3aHSQozV6eqXmyZ_Ed2yYvWxOTZdADDXCI';
 //$generateUrlLink = $otherApplet->generateUrlLink('45_TjkPHTCbFNd6l2kPefHIMbJ60coqnA1NdQn2303bXnoeSGhIPPlBrPPddzBs2C7t6LB5yZALdBjoCFP25aJj_xY6O4L29QnruuZpZwbx2303zKvD5kcCj9bM3aHSQozV6eqXmyZ_Ed2yYvWxOTZdADDXCI','','',1,0,1);
 //var_dump($generateUrlLink);
 //$generateScheme = $otherApplet->generateScheme();
@@ -129,4 +133,48 @@ $token = '45_TjkPHTCbFNd6l2kPefHIMbJ60coqnA1NdQn2303bXnoeSGhIPPlBrPPddzBs2C7t6LB
 //var_dump($otherApplet->subscribeMessageGetCategory($token));
 //var_dump($otherApplet->getPubTemplateTitles($token,682));
 //var_dump($otherApplet->getPubTemplateKeywords($token,3382));
-var_dump($otherApplet->getTemplate($token));
+//var_dump($otherApplet->getTemplate($token));
+
+
+//生成平台证书
+//$save = Pay::certificates("LOrBEvDQQJw4S8EKpFfzYCsualLVN2mB","1485481822",'45CA445043E4A0C26C6870AA33833AFEAFD2407D',"./cert/apiclient_key.pem",'./cert/');
+
+
+
+
+$instance = Pay::getV3Instance('1485481*822','file://cert/apiclient_key.pem',Pay::parseCertificateSerialNo('file://cert/apiclient_cert.pem'),'file://cert/wechatpay_590B78D5500D74E84E465951DA0059F2030B97B8***.pem');
+
+try {
+    $resp = $instance
+        ->v3->pay->transactions->jsapi
+        ->post(
+            [
+                'json' => [
+                    "appid" => "wx101f057502df92fe",
+                    "mchid" => "1485481822",
+                    "out_trade_no" => "1217752501201407033233368318",
+                    "description" => "Image形象店-深圳腾大-QQ公仔",
+                    "notify_url" => "http://saas.merchant.xingfufit.cn/notify/wechat",
+                    "amount" => [
+                        "total" => 1,
+                        "currency" => "CNY"
+                    ],
+                    "payer" => [
+                        "openid" => "oqyTm5QGCGMJZ7_uqjvwH4AeN6L4"
+                    ]
+                ]
+            ]
+        );
+//    echo $resp->getHeader();
+//    echo $resp->getStatusCode(), PHP_EOL;
+    echo $resp->getBody(), PHP_EOL;
+} catch (\Exception $e) {
+//    // 进行错误处理
+    echo $e->getMessage(), PHP_EOL;
+    if ($e instanceof \GuzzleHttp\Exception\RequestException && $e->hasResponse()) {
+        $r = $e->getResponse();
+        echo $r->getStatusCode() . ' ' . $r->getReasonPhrase(), PHP_EOL;
+        echo $r->getBody(), PHP_EOL, PHP_EOL, PHP_EOL;
+    }
+    echo $e->getTraceAsString(), PHP_EOL;
+}

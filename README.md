@@ -56,4 +56,7 @@ library下AppletCategory
 [其他小程序业务接口|其他小程序相关接口](https://developers.weixin.qq.com/doc/oplatform/Third-party_Platforms/2.0/api/Business/SubcribeMessage.html)
 library下OtherApplet 未更新完毕
 
+[集成微信支付官方包](https://github.com/wechatpay-apiv3/wechatpay-php)
+library下Pay 使用方法可参照官方(可通过web调用包的形式直接生成平台证书)
+
 -使用方法课参见Test Receive TestCallBack 可统一由WeChatServer进行调用也可单独调用
