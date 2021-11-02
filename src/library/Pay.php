@@ -60,6 +60,7 @@ class  Pay
         $stack->after('verifier', Middleware::mapResponse(static::certsInjector($apiv3Key, $certs)), 'injector');
         $stack->before('verifier', Middleware::mapResponse(static::certsRecorder($certs, $data)), 'recorder');
         $instance->chain('v3/certificates')->getAsync(['debug' => false])->wait();
+        $data['certs'] = $certs;
         return $data;
     }
 
