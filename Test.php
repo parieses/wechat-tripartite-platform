@@ -137,8 +137,8 @@ $component_access_token = "45_v3XXYi4cpzIQtzKjEd10rV5UjvIEJvjueW82sAZ4rvJU2WMCHb
 
 
 //生成平台证书
-//$save = Pay::certificates("LOrBEvDQQJw4S8EKpFfzYCsualLVN2mB","1485481822",'45CA445043E4A0C26C6870AA33833AFEAFD2407D',"./cert/apiclient_key.pem",'./cert/');
-
+$save = Pay::certificates("LOrBEvDQQJw4S8EKpFfzYCsualLVN2mB","1485481822",'45CA445043E4A0C26C6870AA33833AFEAFD2407D',"./cert/apiclient_key.pem");
+var_dump($save);die();
 
 
 
