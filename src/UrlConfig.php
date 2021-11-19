@@ -8,6 +8,26 @@ class UrlConfig
 {
     public const baseUrl = 'https://api.weixin.qq.com';
     /**
+     * openApi管理
+     */
+    //清空api的调用quota
+    public const clearQuota = self::baseUrl . "/cgi-bin/clear_quota?access_token=";
+    //查询openAPI调用quota
+    public const getQuota = self::baseUrl . "/cgi-bin/openapi/quota/get?access_token=";
+    //查询rid信息
+    public const getRid = self::baseUrl . "/cgi-bin/openapi/rid/get?access_token=";
+
+    /**
+     * 小程序用户隐私保护指引
+     */
+    //设置小程序用户隐私保护指引
+    public const setPrivacySetting = self::baseUrl ."/cgi-bin/component/setprivacysetting?access_token=";
+    //查询小程序用户隐私保护指引
+    public const getPrivacySetting = self::baseUrl ."/cgi-bin/component/getprivacysetting?access_token=";
+    //上传小程序用户隐私保护指引
+    public const uploadPrivacyextFile = self::baseUrl ."/cgi-bin/component/uploadprivacyextfile?access_token=";
+
+    /**
      * 授权相关接口|授权方账号管理接口
      */
     //启动ticket推送服务

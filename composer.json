@@ -22,7 +22,8 @@
     "ext-openssl": "*",
     "ext-simplexml": "*",
     "guzzlehttp/guzzle": "^6.5",
-    "wechatpay/wechatpay": "^1.4"
+    "wechatpay/wechatpay": "^1.4",
+    "ext-curl": "*"
   },
   "repositories": [
     {

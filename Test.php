@@ -7,9 +7,11 @@ use WeChat\library\AppletMember;
 use WeChat\library\AppletTemplate;
 use WeChat\library\Authorization;
 use WeChat\library\ConcernComponent;
+use WeChat\library\OpenApi;
 use WeChat\library\OpenPlatform;
 use WeChat\library\OtherApplet;
 use WeChat\library\Pay;
+use WeChat\library\Privacy;
 use WeChat\library\QrCode;
 use WeChat\library\TrialApplet;
 use WeChat\library\IllegalAndAppeal;
@@ -29,14 +31,14 @@ $token = 'xingfuli';
 //消息加解密Key
 $encodingAesKey = '1CD37E73D5D74B439A167DE3014FD882521XINGFULI';
 $weChat = new WeChatServer(Authorization::class, ['componentAppId' => $componentAppId, 'componentAppSecret' => $componentAppSecret, 'token' => $token, 'encodingAesKey' => $encodingAesKey]);
-$data = ['ticket' => 'znki2rGXe30AWTWliIrpKBVxUNf-TOQQ-54RQrXqdCULxUOtlxksDlk0batVSuzL75xvz-cbpOnKPK1tlXsqqw'];
+//$data = ['ticket' => 'znki2rGXe30AWTWliIrpKBVxUNf-TOQQ-54RQrXqdCULxUOtlxksDlk0batVSuzL75xvz-cbpOnKPK1tlXsqqw'];
 //var_dump($weChat->exec('getComponentAccessToken',$data));
 //获取要操作的类
 $object = $weChat->getInstance();
 //$apiStartPushTicket = $object->apiStartPushTicket();
 //通过ticket 获取 获取令牌
 //$token = $object->apiComponentToken($data['ticket']);
-$component_access_token = "45_Ioxv51SCbMFM79FvqZ180l90ipZ3obFwp0AWKGvGamMKSym4iqlrw_1SeTVySyE-T84ksq1b_mdofWCxLFxERG4s44dxBv_Y6KwTm2MUTlFI7R-vxkHxwvo4zJZ78kdvYntdC0OSHCDLNjgmXHVaABATDR";//$token->component_access_token;
+//$component_access_token = "45_Ioxv51SCbMFM79FvqZ180l90ipZ3obFwp0AWKGvGamMKSym4iqlrw_1SeTVySyE-T84ksq1b_mdofWCxLFxERG4s44dxBv_Y6KwTm2MUTlFI7R-vxkHxwvo4zJZ78kdvYntdC0OSHCDLNjgmXHVaABATDR";//$token->component_access_token;
 //通过令牌获取预授权码
 //$PreauthCode = $object->apiCreatePreauthcode($component_access_token);
 //$PreauthCode  = preg_replace("/preauthcode@@@/", "", $PreauthCode->pre_auth_code);
@@ -47,7 +49,7 @@ $component_access_token = "45_Ioxv51SCbMFM79FvqZ180l90ipZ3obFwp0AWKGvGamMKSym4iq
 //$page   = $object->bindComponent($PreauthCode,'http://member.cn1.utools.club/TestCallBack.php',2);
 //echo "<a href=\"{$page}\">移动</a>";
 //授权回调里面获取的授权码
-$authorization_code = "tWaDFthTreq9M7jKOsrLhJycVkPZ1vcLqQRzJkUnxAAABqkb_RQAdsO0e8h6u5eFSIKjbkY0ini78kwcqxXnJA";
+//$authorization_code = "tWaDFthTreq9M7jKOsrLhJycVkPZ1vcLqQRzJkUnxAAABqkb_RQAdsO0e8h6u5eFSIKjbkY0ini78kwcqxXnJA";
 //使用授权码获取授权信息
 //$apiQueryAuth = $object->apiQueryAuth($component_access_token,$authorization_code);
 //var_dump($apiQueryAuth);die;
@@ -56,16 +58,16 @@ $authorization_code = "tWaDFthTreq9M7jKOsrLhJycVkPZ1vcLqQRzJkUnxAAABqkb_RQAdsO0e
 //接口调用令牌（在授权的公众号/小程序具备 API 权限时，才有此返回值）
 //$authorizer_access_token  = $apiQueryAuth->authorization_info->authorizer_access_token;
 //var_dump($authorizer_access_token);die();
-$authorizer_access_token = "45_QdBqJ_KzrBjKfyZFj_inVDkSkMqAi2jbtQ025h5PLZNPz29J_srWAaQTN0nXziRi3KwVmFyAQTGqSmCZ4aPieJOw4IoZun3PvzsiYydnF-Sr0vC91LP9E9wM2LekM6WqEVzmivyOs7N2P-o4QYLjAIDDLY";
+//$authorizer_access_token = "45_QdBqJ_KzrBjKfyZFj_inVDkSkMqAi2jbtQ025h5PLZNPz29J_srWAaQTN0nXziRi3KwVmFyAQTGqSmCZ4aPieJOw4IoZun3PvzsiYydnF-Sr0vC91LP9E9wM2LekM6WqEVzmivyOs7N2P-o4QYLjAIDDLY";
 //刷新令牌（在授权的公众号具备API权限时，才有此返回值），刷新令牌主要用于第三方平台获取和刷新已授权用户的 authorizer_access_token。一旦丢失，只能让用户重新授权，才能再次拿到新的刷新令牌。用户重新授权后，之前的刷新令牌会失效
 //$authorizer_refresh_token = "oZrs5Gaw7ULyRGfCvlFgIbkclJPARh3B3cAr5VRubmE";                                                                                                                //$apiQueryAuth->authorization_info->authorizer_refresh_token;
 //通过刷新令牌 刷新接口调用令牌
 //$apiAuthorizerToken = $object->apiAuthorizerToken($component_access_token,"wx90721efca5d2c575",$authorizer_refresh_token);
 //var_dump($apiAuthorizerToken);die();
 //获取授权方帐号信息
-$component_access_token = "45_v3XXYi4cpzIQtzKjEd10rV5UjvIEJvjueW82sAZ4rvJU2WMCHb1E5uWUeHe2BUx2lbRjQRsRkYIb77uKoTyJAa57LCFHWOm13NCWp9umuq6NeY6WfLpdZm9DeP8vbwl_vLe_mnlpHMTwva3SAKFaAHAMWR";
-//$apiGetAuthorizerInfo = $object->apiGetAuthorizerInfo($component_access_token,'wx5d675bbbb9d91d47');
-//var_dump($apiGetAuthorizerInfo->authorizer_info->verify_type_info->id);die();
+//$component_access_token = "51_NPnBX4awLqwQMAS9UU47Pz8t2xVI32le2DhBxz8BmbZ1izLsADlUL_5zQln38IChodURlDp_mPaSq96x7WXJYl917aawfgUDLLCjCnLLw4Gf-f2ydUirL78daAG4H48AQJq_LthkIHSuHRVLKCZcACAXPM";
+//$apiGetAuthorizerInfo = $object->apiGetAuthorizerInfo($component_access_token,'wx101f057502df92fe');
+//var_dump($apiGetAuthorizerInfo);die();
 ////拉取所有已授权的帐号信息
 //$api_get_authorizer_list = $object->api_get_authorizer_list($token->component_access_token);
 //获取授权方选项信息
@@ -137,44 +139,54 @@ $component_access_token = "45_v3XXYi4cpzIQtzKjEd10rV5UjvIEJvjueW82sAZ4rvJU2WMCHb
 
 
 //生成平台证书
-$save = Pay::certificates("LOrBEvDQQJw4S8EKpFfzYCsualLVN2mB","1485481822",'45CA445043E4A0C26C6870AA33833AFEAFD2407D',"./cert/apiclient_key.pem");
-var_dump($save);die();
+//$save = Pay::certificates("LOrBEvDQQJw4S8EKpFfzYCsualLVN2mB","1485481822",'45CA445043E4A0C26C6870AA33833AFEAFD2407D',"./cert/apiclient_key.pem");
+//var_dump($save);die();
 
 
 
-$instance = Pay::getV3Instance('1485481*822','file://cert/apiclient_key.pem',Pay::parseCertificateSerialNo('file://cert/apiclient_cert.pem'),'file://cert/wechatpay_590B78D5500D74E84E465951DA0059F2030B97B8***.pem');
+//$instance = Pay::getV3Instance('1485481*822','file://cert/apiclient_key.pem',Pay::parseCertificateSerialNo('file://cert/apiclient_cert.pem'),'file://cert/wechatpay_590B78D5500D74E84E465951DA0059F2030B97B8***.pem');
+//
+//try {
+//    $resp = $instance
+//        ->v3->pay->transactions->jsapi
+//        ->post(
+//            [
+//                'json' => [
+//                    "appid" => "wx101f057502df92fe",
+//                    "mchid" => "1485481822",
+//                    "out_trade_no" => "1217752501201407033233368318",
+//                    "description" => "Image形象店-深圳腾大-QQ公仔",
+//                    "notify_url" => "http://saas.merchant.xingfufit.cn/notify/wechat",
+//                    "amount" => [
+//                        "total" => 1,
+//                        "currency" => "CNY"
+//                    ],
+//                    "payer" => [
+//                        "openid" => "oqyTm5QGCGMJZ7_uqjvwH4AeN6L4"
+//                    ]
+//                ]
+//            ]
+//        );
+////    echo $resp->getHeader();
+////    echo $resp->getStatusCode(), PHP_EOL;
+//    echo $resp->getBody(), PHP_EOL;
+//} catch (\Exception $e) {
+////    // 进行错误处理
+//    echo $e->getMessage(), PHP_EOL;
+//    if ($e instanceof \GuzzleHttp\Exception\RequestException && $e->hasResponse()) {
+//        $r = $e->getResponse();
+//        echo $r->getStatusCode() . ' ' . $r->getReasonPhrase(), PHP_EOL;
+//        echo $r->getBody(), PHP_EOL, PHP_EOL, PHP_EOL;
+//    }
+//    echo $e->getTraceAsString(), PHP_EOL;
+//}
+$component_access_token = "-bvYJxr_DYqWzq8xZQfNFplfMDDbw6UP0ByvKR_xqcsxMEsm3ATjVwfg3uyNCdwfnm9VdFi69VbyVqgX1bXbJuAUc3PYA6MHEIzWzomnX_9H6BMNeAHDOZA";
+//$open = new OpenApi();
+//var_dump($open->getQuota($component_access_token,'/cgi-bin/message/custom/send'));
 
-try {
-    $resp = $instance
-        ->v3->pay->transactions->jsapi
-        ->post(
-            [
-                'json' => [
-                    "appid" => "wx101f057502df92fe",
-                    "mchid" => "1485481822",
-                    "out_trade_no" => "1217752501201407033233368318",
-                    "description" => "Image形象店-深圳腾大-QQ公仔",
-                    "notify_url" => "http://saas.merchant.xingfufit.cn/notify/wechat",
-                    "amount" => [
-                        "total" => 1,
-                        "currency" => "CNY"
-                    ],
-                    "payer" => [
-                        "openid" => "oqyTm5QGCGMJZ7_uqjvwH4AeN6L4"
-                    ]
-                ]
-            ]
-        );
-//    echo $resp->getHeader();
-//    echo $resp->getStatusCode(), PHP_EOL;
-    echo $resp->getBody(), PHP_EOL;
-} catch (\Exception $e) {
-//    // 进行错误处理
-    echo $e->getMessage(), PHP_EOL;
-    if ($e instanceof \GuzzleHttp\Exception\RequestException && $e->hasResponse()) {
-        $r = $e->getResponse();
-        echo $r->getStatusCode() . ' ' . $r->getReasonPhrase(), PHP_EOL;
-        echo $r->getBody(), PHP_EOL, PHP_EOL, PHP_EOL;
-    }
-    echo $e->getTraceAsString(), PHP_EOL;
-}
+$privacy = new Privacy();
+//var_dump($privacy->getPrivacySetting($component_access_token));
+//var_dump($privacy->uploadPrivacyextFile($component_access_token,'./Test.txt'));
+$owner_setting = ['contact_qq'=>1695699447,'notice_method'=>'notice_method'];
+var_dump($privacy->setPrivacySetting($component_access_token,$owner_setting));
+
