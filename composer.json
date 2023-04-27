@@ -21,7 +21,7 @@
     "ext-dom": "*",
     "ext-openssl": "*",
     "ext-simplexml": "*",
-    "guzzlehttp/guzzle": "^6.5",
+    "guzzlehttp/guzzle": "^7.4",
     "wechatpay/wechatpay": "^1.4",
     "ext-curl": "*"
   },

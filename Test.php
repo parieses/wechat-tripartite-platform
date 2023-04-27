@@ -24,10 +24,10 @@ use WeChatPay\Util\PemUtil;
 require __DIR__ . '/vendor/autoload.php';
 
 
-$componentAppId = 'wx9f42dd7989abd9d9';
-$componentAppSecret = 'c6f44578a0d99bd54ffe7b9ecb5b26fa';
+$componentAppId = 'wx108c9cc5a36ef1b0';
+$componentAppSecret = '10cbbc0b28fa9dee578b8bf0f2696e48';
 //消息校验Token
-$token = 'xingfuli';
+$token = 'henanwaifu';
 //消息加解密Key
 $encodingAesKey = '1CD37E73D5D74B439A167DE3014FD882521XINGFULI';
 $weChat = new WeChatServer(Authorization::class, ['componentAppId' => $componentAppId, 'componentAppSecret' => $componentAppSecret, 'token' => $token, 'encodingAesKey' => $encodingAesKey]);
