@@ -2,8 +2,7 @@
 
 namespace WeChat\library;
 
-use Curl\Curl;
-use DOMDocument;
+use http\Exception\RuntimeException;
 use WeChat\UrlConfig;
 
 
@@ -27,9 +26,9 @@ class  OtherApplet
      * Date: 2021/6/10
      * Time: 19:40
      * Email:1695699447@qq.com
-     * @param $appid                  :小程序的 AppID
-     * @param $js_code                :wx.login 获取的 code
-     * @param $component_appid        :第三方平台 appid
+     * @param $appid :小程序的 AppID
+     * @param $js_code :wx.login 获取的 code
+     * @param $component_appid :第三方平台 appid
      * @param $component_access_token :第三方平台的component_access_token
      * @return mixed
      */
@@ -49,8 +48,8 @@ class  OtherApplet
      * Date: 2021/6/10
      * Time: 19:48
      * Email:1695699447@qq.com
-     * @param $access_token   :第三方平台接口调用令牌authorizer_access_token
-     * @param $openid         :支付用户唯一标识
+     * @param $access_token :第三方平台接口调用令牌authorizer_access_token
+     * @param $openid :支付用户唯一标识
      * @param $transaction_id :微信订单号
      * @return mixed
      */
@@ -71,8 +70,8 @@ class  OtherApplet
      * Time: 19:50
      * Email:1695699447@qq.com
      * @param $access_token :第三方平台接口调用令牌authorizer_access_token
-     * @param $openid       :支付用户唯一标识
-     * @param $mch_id       :商户号，和商户订单号配合使用
+     * @param $openid :支付用户唯一标识
+     * @param $mch_id :商户号，和商户订单号配合使用
      * @param $out_trade_no :商户订单号，和商户号配合使用
      * @return mixed
      */
@@ -91,14 +90,14 @@ class  OtherApplet
      * Date: 2021/6/11
      * Time: 9:57
      * Email:1695699447@qq.com
-     * @param      $access_token    :接口调用凭证
-     * @param      $path            :通过 URL Link 进入的小程序页面路径，必须是已经发布的小程序存在的页面，不可携带 query 。path 为空时会跳转小程序主页
-     * @param      $query           :通过 URL Link 进入小程序时的query，最大1024个字符，只支持数字，大小写英文以及部分特殊字符：!#$&'()*+,/:;=?@-._~
-     * @param      $expire_type     :小程序 URL Link 失效类型，失效时间：0，失效间隔天数：1
-     * @param      $expire_time     :到期失效的 URL Link 的失效时间，为 Unix 时间戳。生成的到期失效 URL Link 在该时间前有效。最长有效期为1年。expire_type 为 0 必填
+     * @param      $access_token :接口调用凭证
+     * @param      $path :通过 URL Link 进入的小程序页面路径，必须是已经发布的小程序存在的页面，不可携带 query 。path 为空时会跳转小程序主页
+     * @param      $query :通过 URL Link 进入小程序时的query，最大1024个字符，只支持数字，大小写英文以及部分特殊字符：!#$&'()*+,/:;=?@-._~
+     * @param      $expire_type :小程序 URL Link 失效类型，失效时间：0，失效间隔天数：1
+     * @param      $expire_time :到期失效的 URL Link 的失效时间，为 Unix 时间戳。生成的到期失效 URL Link 在该时间前有效。最长有效期为1年。expire_type 为 0 必填
      * @param      $expire_interval :    到期失效的URL Link的失效间隔天数。生成的到期失效URL Link在该间隔时间到达前有效。最长间隔天数为365天。expire_type 为 1 必填
-     * @param bool $is_expire       :生成的 URL Link 类型，到期失效：true，永久有效：false
-     * @param null $cloud_base      :云开发静态网站自定义 H5 配置参数，可配置中转的云开发 H5 页面。不填默认用官方 H5 页面
+     * @param bool $is_expire :生成的 URL Link 类型，到期失效：true，永久有效：false
+     * @param null $cloud_base :云开发静态网站自定义 H5 配置参数，可配置中转的云开发 H5 页面。不填默认用官方 H5 页面
      * @return mixed
      */
     public function generateUrlLink($access_token, $path, $query, $expire_type, $expire_time, $expire_interval, $is_expire = true, $cloud_base = null)
@@ -129,9 +128,9 @@ class  OtherApplet
      * Time: 10:06
      * Email:1695699447@qq.com
      * @param      $access_token :接口调用凭证
-     * @param null $jump_wxa     :    跳转到的目标小程序信息。
-     * @param bool $is_expire    :生成的 scheme 码类型，到期失效：true，永久有效：false。
-     * @param null $expire_time  :    到期失效的 scheme 码的失效时间，为 Unix 时间戳。生成的到期失效 scheme 码在该时间前有效。最长有效期为1年。生成到期失效的scheme时必填。
+     * @param null $jump_wxa :    跳转到的目标小程序信息。
+     * @param bool $is_expire :生成的 scheme 码类型，到期失效：true，永久有效：false。
+     * @param null $expire_time :    到期失效的 scheme 码的失效时间，为 Unix 时间戳。生成的到期失效 scheme 码在该时间前有效。最长有效期为1年。生成到期失效的scheme时必填。
      * @return mixed
      */
     public function generateScheme($access_token, $jump_wxa = null, $is_expire = false, $expire_time = null)
@@ -171,9 +170,9 @@ class  OtherApplet
      * Time: 10:24
      * Email:1695699447@qq.com
      * @param     $access_token :接口调用凭证
-     * @param     $ids          :类目 id，多个用逗号隔开
-     * @param int $start        :    用于分页，表示从 start 开始。从 0 开始计数。
-     * @param int $limit        :用于分页，表示拉取 limit 条记录。最大为 30。
+     * @param     $ids :类目 id，多个用逗号隔开
+     * @param int $start :    用于分页，表示从 start 开始。从 0 开始计数。
+     * @param int $limit :用于分页，表示拉取 limit 条记录。最大为 30。
      * @return mixed
      */
     public function getPubTemplateTitles($access_token, $ids, $start = 0, $limit = 30)
@@ -193,7 +192,7 @@ class  OtherApplet
      * Time: 10:33
      * Email:1695699447@qq.com
      * @param $access_token :接口调用凭证
-     * @param $tid          :模板标题 id，可通过接口获取
+     * @param $tid :模板标题 id，可通过接口获取
      * @return mixed
      */
     public function getPubTemplateKeywords($access_token, $tid)
@@ -213,9 +212,9 @@ class  OtherApplet
      * Time: 10:37
      * Email:1695699447@qq.com
      * @param $access_token :接口调用凭证
-     * @param $tid          :模板标题 id，可通过接口获取，也可登录小程序后台查看获取
-     * @param $kidList      :开发者自行组合好的模板关键词列表，关键词顺序可以自由搭配（例如 [3,5,4] 或 [4,5,3]），最多支持5个，最少2个关键词组合
-     * @param $sceneDesc    :服务场景描述，15个字以内
+     * @param $tid :模板标题 id，可通过接口获取，也可登录小程序后台查看获取
+     * @param $kidList :开发者自行组合好的模板关键词列表，关键词顺序可以自由搭配（例如 [3,5,4] 或 [4,5,3]），最多支持5个，最少2个关键词组合
+     * @param $sceneDesc :服务场景描述，15个字以内
      * @return mixed
      */
     public function addTemplate($access_token, $tid, $kidList, $sceneDesc)
@@ -255,7 +254,7 @@ class  OtherApplet
      * Time: 10:52
      * Email:1695699447@qq.com
      * @param $access_token :接口调用凭证
-     * @param $priTmplId    :要删除的模板id
+     * @param $priTmplId :要删除的模板id
      * @return mixed
      */
     public function delTemplate($access_token, $priTmplId)
@@ -275,13 +274,13 @@ class  OtherApplet
      * Date: 2021/6/11
      * Time: 10:56
      * Email:1695699447@qq.com
-     * @param        $access_token      :接口调用凭证
-     * @param        $touser            :    接收者（用户）的 openid
-     * @param        $template_id       :所需下发的订阅模板id
-     * @param        $data              :    模板内容，格式形如 { "key1": { "value": any }, "key2": { "value": any } }
-     * @param string $page              :点击模板卡片后的跳转页面，仅限本小程序内的页面。支持带参数,（示例index?foo=bar）。该字段不填则模板无跳转。
+     * @param        $access_token :接口调用凭证
+     * @param        $touser :    接收者（用户）的 openid
+     * @param        $template_id :所需下发的订阅模板id
+     * @param        $data :    模板内容，格式形如 { "key1": { "value": any }, "key2": { "value": any } }
+     * @param string $page :点击模板卡片后的跳转页面，仅限本小程序内的页面。支持带参数,（示例index?foo=bar）。该字段不填则模板无跳转。
      * @param string $miniprogram_state :跳转小程序类型：developer为开发版；trial为体验版；formal为正式版；默认为正式版
-     * @param string $lang              :进入小程序查看”的语言类型，支持zh_CN(简体中文)、en_US(英文)、zh_HK(繁体中文)、zh_TW(繁体中文)，默认为zh_CN
+     * @param string $lang :进入小程序查看”的语言类型，支持zh_CN(简体中文)、en_US(英文)、zh_HK(繁体中文)、zh_TW(繁体中文)，默认为zh_CN
      * @return mixed
      */
     public function send($access_token, $touser, $template_id, $data, $page = '', $miniprogram_state = 'developer', $lang = 'zh_CN')
@@ -303,9 +302,9 @@ class  OtherApplet
      * Time: 10:51
      * Email:1695699447@qq.com
      * @param $access_token :接口调用凭证
-     * @param $touser       :用户的 OpenID
-     * @param $msgtype      :消息类型
-     * @param $object       :每个类型的数据的结构https://developers.weixin.qq.com/miniprogram/dev/api-backend/open-api/customer-message/customerServiceMessage.send.html
+     * @param $touser :用户的 OpenID
+     * @param $msgtype :消息类型
+     * @param $object :每个类型的数据的结构https://developers.weixin.qq.com/miniprogram/dev/api-backend/open-api/customer-message/customerServiceMessage.send.html
      * @return mixed
      */
     public function customerMessageSend($access_token, $touser, $msgtype, $object)
@@ -327,8 +326,8 @@ class  OtherApplet
      * Time: 11:05
      * Email:1695699447@qq.com
      * @param $access_token :接口调用凭证
-     * @param $touser       :用户的 OpenID
-     * @param $command      :命令 Typing:对用户下发"正在输入"状态 CancelTyping:取消对用户的"正在输入"状态
+     * @param $touser :用户的 OpenID
+     * @param $command :命令 Typing:对用户下发"正在输入"状态 CancelTyping:取消对用户的"正在输入"状态
      * @return mixed
      */
     public function customerMessageSetTyping($access_token, $touser, $command)
@@ -350,12 +349,34 @@ class  OtherApplet
      * Time: 11:09
      * Email:1695699447@qq.com
      * @param $access_token :接口调用凭证
-     * @param $media_id     :媒体文件 ID
+     * @param $media_id :媒体文件 ID
      * @return mixed
      */
     public function customerMessageGetTempMedia($access_token, $media_id)
     {
         $url = sprintf(UrlConfig::customerMessageGetTempMedia, $access_token, $media_id);
         return $this->curl->get($url);
+    }
+
+    /**
+     * Remark:小程序新增图片素材
+     * Created by PhpStorm.
+     * User: liang
+     * Date: 2023/5/5 16:28
+     * Name: mediaUploadImage
+     * @param $access_token
+     * @param $path :文件路径远程文件在测试文件查看使用方法
+     * @return mixed
+     * @url https://developers.weixin.qq.com/miniprogram/dev/OpenApiDoc/kf-mgnt/kf-message/uploadTempMedia.html
+     */
+    public function mediaUploadImage($access_token, $path)
+    {
+        if (!file_exists($path) || !is_readable($path)) {
+            throw new RuntimeException("文件不存在，或者文件不可读: '$path'");
+        }
+        $url = sprintf(UrlConfig::mediaUploadImage, $access_token);
+        var_dump($url);
+        $file = new \CURLFile($path);
+        return $this->curl->post($url, ['media' => $file]);
     }
 }

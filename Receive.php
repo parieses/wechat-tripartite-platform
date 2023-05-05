@@ -17,11 +17,29 @@ $timestamp = $_GET['timestamp'];
 $nonce = $_GET['nonce'];
 $msg_signature = $_GET['msg_signature'];
 $msg = file_get_contents("php://input");
-file_put_contents('Receive.txt', $msg . PHP_EOL,FILE_APPEND);
+file_put_contents('Receive.txt', $msg . PHP_EOL, FILE_APPEND);
 $weChat = new WeChatServer(Authorization::class, ['componentAppId' => $componentAppId, 'componentAppSecret' => $componentAppSecret, 'token' => $token, 'encodingAesKey' => $encodingAesKey]);
 $object = $weChat->getInstance();
 $ticket = $object->getAuthorizationEvents($msg_signature, $timestamp, $nonce, $msg);
-file_put_contents('Receive.txt', json_encode($ticket) . PHP_EOL,FILE_APPEND);
+switch ($ticket['type']) {
+    case 'component_verify_ticket':
+        break;
+    //授权
+    case 'authorized':
+//                return $ticket;
+//                break;
+        //取消授权更新记录
+    case 'unauthorized':
+//                return $ticket;
+//                break;
+        //更新权限集
+    case 'updateauthorized':
+//                break;
+    default:
+        return $ticket;
+}
+echo 'success';
+file_put_contents('Receive.txt', json_encode($ticket) . PHP_EOL, FILE_APPEND);
 echo 'success';
 
 

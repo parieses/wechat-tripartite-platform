@@ -21,11 +21,11 @@ class UrlConfig
      * 小程序用户隐私保护指引
      */
     //设置小程序用户隐私保护指引
-    public const setPrivacySetting = self::baseUrl ."/cgi-bin/component/setprivacysetting?access_token=";
+    public const setPrivacySetting = self::baseUrl . "/cgi-bin/component/setprivacysetting?access_token=";
     //查询小程序用户隐私保护指引
-    public const getPrivacySetting = self::baseUrl ."/cgi-bin/component/getprivacysetting?access_token=";
+    public const getPrivacySetting = self::baseUrl . "/cgi-bin/component/getprivacysetting?access_token=";
     //上传小程序用户隐私保护指引
-    public const uploadPrivacyextFile = self::baseUrl ."/cgi-bin/component/uploadprivacyextfile?access_token=";
+    public const uploadPrivacyextFile = self::baseUrl . "/cgi-bin/component/uploadprivacyextfile?access_token=";
 
     /**
      * 授权相关接口|授权方账号管理接口
@@ -267,6 +267,7 @@ class UrlConfig
     public const customerMessageSetTyping = self::baseUrl . '/cgi-bin/message/custom/typing?access_token=';
     //客服消息-获取客服消息内的临时素材
     public const customerMessageGetTempMedia = self::baseUrl . '/cgi-bin/message/custom/typing?access_token=%1$s&media_id=%2$s';
-
+    //小程序新增图片素材
+    public const mediaUploadImage = self::baseUrl . '/cgi-bin/media/upload?access_token=%1$s&type=image';
 
 }

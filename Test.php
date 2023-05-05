@@ -1,25 +1,9 @@
 <?php
 
 
-use WeChat\library\AppletBasicInformation;
-use WeChat\library\AppletCode;
-use WeChat\library\AppletMember;
-use WeChat\library\AppletTemplate;
 use WeChat\library\Authorization;
-use WeChat\library\ConcernComponent;
-use WeChat\library\OpenApi;
-use WeChat\library\OpenPlatform;
 use WeChat\library\OtherApplet;
-use WeChat\library\Pay;
-use WeChat\library\Privacy;
-use WeChat\library\QrCode;
-use WeChat\library\TrialApplet;
-use WeChat\library\IllegalAndAppeal;
-use WeChat\UrlConfig;
 use WeChat\WeChatServer;
-use WeChatPay\Builder;
-use WeChatPay\Crypto\Rsa;
-use WeChatPay\Util\PemUtil;
 
 require __DIR__ . '/vendor/autoload.php';
 
@@ -34,7 +18,7 @@ $weChat = new WeChatServer(Authorization::class, ['componentAppId' => $component
 //$data = ['ticket' => 'znki2rGXe30AWTWliIrpKBVxUNf-TOQQ-54RQrXqdCULxUOtlxksDlk0batVSuzL75xvz-cbpOnKPK1tlXsqqw'];
 //var_dump($weChat->exec('getComponentAccessToken',$data));
 //获取要操作的类
-$object = $weChat->getInstance();
+//$object = $weChat->getInstance();
 //$apiStartPushTicket = $object->apiStartPushTicket();
 //通过ticket 获取 获取令牌
 //$token = $object->apiComponentToken($data['ticket']);
@@ -143,7 +127,6 @@ $object = $weChat->getInstance();
 //var_dump($save);die();
 
 
-
 //$instance = Pay::getV3Instance('1485481*822','file://cert/apiclient_key.pem',Pay::parseCertificateSerialNo('file://cert/apiclient_cert.pem'),'file://cert/wechatpay_590B78D5500D74E84E465951DA0059F2030B97B8***.pem');
 //
 //try {
@@ -180,13 +163,20 @@ $object = $weChat->getInstance();
 //    }
 //    echo $e->getTraceAsString(), PHP_EOL;
 //}
-$component_access_token = "-bvYJxr_DYqWzq8xZQfNFplfMDDbw6UP0ByvKR_xqcsxMEsm3ATjVwfg3uyNCdwfnm9VdFi69VbyVqgX1bXbJuAUc3PYA6MHEIzWzomnX_9H6BMNeAHDOZA";
-//$open = new OpenApi();
-//var_dump($open->getQuota($component_access_token,'/cgi-bin/message/custom/send'));
-
-$privacy = new Privacy();
-//var_dump($privacy->getPrivacySetting($component_access_token));
-//var_dump($privacy->uploadPrivacyextFile($component_access_token,'./Test.txt'));
-$owner_setting = ['contact_qq'=>1695699447,'notice_method'=>'notice_method'];
-var_dump($privacy->setPrivacySetting($component_access_token,$owner_setting));
-
+//$component_access_token = "-bvYJxr_DYqWzq8xZQfNFplfMDDbw6UP0ByvKR_xqcsxMEsm3ATjVwfg3uyNCdwfnm9VdFi69VbyVqgX1bXbJuAUc3PYA6MHEIzWzomnX_9H6BMNeAHDOZA";
+////$open = new OpenApi();
+////var_dump($open->getQuota($component_access_token,'/cgi-bin/message/custom/send'));
+//
+//$privacy = new Privacy();
+////var_dump($privacy->getPrivacySetting($component_access_token));
+////var_dump($privacy->uploadPrivacyextFile($component_access_token,'./Test.txt'));
+//$owner_setting = ['contact_qq'=>1695699447,'notice_method'=>'notice_method'];
+//var_dump($privacy->setPrivacySetting($component_access_token,$owner_setting));
+//
+$remoteFileUrl = 'https://view.yuanqianht.com/piao/2022/09/24/796fc9aa40e0fe82ee7fc44a6f7b339e.png';
+$file_path = './1.png';
+file_put_contents($file_path, file_get_contents($remoteFileUrl));
+$other = new OtherApplet();
+$data = $other->mediaUploadImage("68_z6vPtUDlyk1mBhKo6SV5dwOdKUD7AuA0bkTF-V-J2-SvB7eg3xIXCHz60Dy__-Rx1HYL5uvKXvcJ3hCkb_io5AaZvHM4d_DfTJvKfSAjVKiZ44HfPWA5-qGW6pEFUhOfRcd8YjIdu-5nCrT-IGTcAIDBZM", $file_path);
+var_dump($data);
+unlink($file_path);

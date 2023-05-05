@@ -5,7 +5,7 @@
   ```shell script
  composer require liang/wechat-tripartite-platform
  ```
-
+如需对照时候集成此功能可查看UrlConfig文件对比官方文档
  [官方文档](https://developers.weixin.qq.com/doc/oplatform/Third-party_Platforms/2.0/getting_started/how_to_read.html)
  
  [返回码快速查找](https://developers.weixin.qq.com/doc/oplatform/Return_codes/Return_code_descriptions_new.html)
