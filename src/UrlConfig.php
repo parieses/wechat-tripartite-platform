@@ -96,6 +96,15 @@ class UrlConfig
     //删除指定代码模板
     public const deleteTemplate = self::baseUrl . "/wxa/deletetemplate?access_token=";
 
+    /**
+     * 第三方平台域名管理
+     */
+    //设置第三方平台服务器域名
+    public const modifyThirdpartyServerDomain = self::baseUrl . "/cgi-bin/component/modify_wxa_server_domain?access_token=";
+    //获取第三方平台业务域名校验文件
+    public const getThirdpartyJumpDomainConfirmFile = self::baseUrl . "/cgi-bin/component/get_domain_confirmfile?access_token=";
+    //设置第三方平台业务域名
+    public const modifyThirdpartyJumpDomain = self::baseUrl . "/cgi-bin/component/modify_wxa_jump_domain?access_token=";
 
     /**
      * 小程序成员管理接口

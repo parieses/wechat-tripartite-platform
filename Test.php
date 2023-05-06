@@ -2,6 +2,7 @@
 
 
 use WeChat\library\Authorization;
+use WeChat\library\OpenPlatform;
 use WeChat\library\OtherApplet;
 use WeChat\WeChatServer;
 
@@ -173,10 +174,15 @@ $weChat = new WeChatServer(Authorization::class, ['componentAppId' => $component
 //$owner_setting = ['contact_qq'=>1695699447,'notice_method'=>'notice_method'];
 //var_dump($privacy->setPrivacySetting($component_access_token,$owner_setting));
 //
-$remoteFileUrl = 'https://view.yuanqianht.com/piao/2022/09/24/796fc9aa40e0fe82ee7fc44a6f7b339e.png';
-$file_path = './1.png';
-file_put_contents($file_path, file_get_contents($remoteFileUrl));
-$other = new OtherApplet();
-$data = $other->mediaUploadImage("68_z6vPtUDlyk1mBhKo6SV5dwOdKUD7AuA0bkTF-V-J2-SvB7eg3xIXCHz60Dy__-Rx1HYL5uvKXvcJ3hCkb_io5AaZvHM4d_DfTJvKfSAjVKiZ44HfPWA5-qGW6pEFUhOfRcd8YjIdu-5nCrT-IGTcAIDBZM", $file_path);
-var_dump($data);
-unlink($file_path);
+//$remoteFileUrl = 'https://view.yuanqianht.com/piao/2022/09/24/796fc9aa40e0fe82ee7fc44a6f7b339e.png';
+//$file_path = './1.png';
+//file_put_contents($file_path, file_get_contents($remoteFileUrl));
+//$other = new OtherApplet();
+//$data = $other->mediaUploadImage("68_z6vPtUDlyk1mBhKo6SV5dwOdKUD7AuA0bkTF-V-J2-SvB7eg3xIXCHz60Dy__-Rx1HYL5uvKXvcJ3hCkb_io5AaZvHM4d_DfTJvKfSAjVKiZ44HfPWA5-qGW6pEFUhOfRcd8YjIdu-5nCrT-IGTcAIDBZM", $file_path);
+//var_dump($data);
+//unlink($file_path);
+$OpenPlatform = new OpenPlatform();
+
+//$da = $OpenPlatform->modifyThirdpartyServerDomain('68_6eRWb9z9DrPtic8_cBWsBZCyZ81pqPYD3vcUrZ6-QI2ZsDTS5dPf0FZryIi1Fu6WXUSX-nJC36U4ZneVvsfM39w672CmADD972wHmNd3EXGJMOOGpEw77KIjiMUMDEaAHAXOP','get');
+$da = $OpenPlatform->modifyThirdpartyJumpDomain('68_6eRWb9z9DrPtic8_cBWsBZCyZ81pqPYD3vcUrZ6-QI2ZsDTS5dPf0FZryIi1Fu6WXUSX-nJC36U4ZneVvsfM39w672CmADD972wHmNd3EXGJMOOGpEw77KIjiMUMDEaAHAXOP','get');
+var_dump($da);
