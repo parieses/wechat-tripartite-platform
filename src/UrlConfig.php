@@ -144,16 +144,24 @@ class UrlConfig
     public const getGrayReleasePlan = self::baseUrl . "/wxa/getgrayreleaseplan?access_token=";
     //取消分阶段发布
     public const revertGrayRelease = self::baseUrl . "/wxa/revertgrayrelease?access_token=";
+    //查询小程序服务状态
+    public const getVisitStatus = self::baseUrl . "/wxa/getvisitstatus?access_token=";
     //修改小程序服务状态
     public const changeVisitStatus = self::baseUrl . "/wxa/change_visitstatus?access_token=";
-    //查询当前设置的最低基础库版本及各版本用户占比
+    //查询各版本用户占比
     public const getWeappSupportVersion = self::baseUrl . "/cgi-bin/wxopen/getweappsupportversion?access_token=";
     //设置最低基础库版本
     public const setWeappSupportVersion = self::baseUrl . "/cgi-bin/wxopen/setweappsupportversion?access_token=";
-    //查询服务商的当月提审限额（quota）和加急次数
+    //查询服务商审核额度
     public const queryQuota = self::baseUrl . "/wxa/queryquota?access_token=";
-    //加急审核申请
+    //加急代码审核
     public const speedUpAudit = self::baseUrl . "/wxa/speedupaudit?access_token=";
+    //查询小程序版本信息
+    public const getVersionInfo = self::baseUrl . "/wxa/getversioninfo?access_token=";
+    //上传提审素材
+    public const uploadMediaToCodeAudit = self::baseUrl . "/wxa/uploadmedia?access_token=";
+    //获取隐私接口检测结果
+    public const getCodePrivacyInfo = self::baseUrl . "/wxa/security/get_code_privacy_info?access_token=";
 
 
     /**
@@ -279,4 +287,22 @@ class UrlConfig
     //小程序新增图片素材
     public const mediaUploadImage = self::baseUrl . '/cgi-bin/media/upload?access_token=%1$s&type=image';
 
+    /**
+     * we分析
+     * @RUL:https://developers.weixin.qq.com/doc/oplatform/openApi/OpenApiDoc/miniprogram-management/we-analysis/weDataGetLoginConfig.html
+     */
+    //查询登陆配置
+    public const weDataGetLoginConfig = self::baseUrl . '/wedata/wedata_get_login_config?access_token=';
+    //设置登录配置
+    public const weDataSetLoginConfig = self::baseUrl . '/wedata/wedata_set_login_config?access_token=';
+    //获取商家We分析权限集列表
+    public const weDataGetPermList = self::baseUrl . '/wedata/wedata_get_perm_list?access_token=';
+    //设置用户We分析权限集
+    public const weDataSetUserPerm = self::baseUrl . '/wedata/wedata_set_user_perm?access_token=';
+    //查询用户绑定列表
+    public const weDataQueryBindList = self::baseUrl . '/wedata/wedata_query_bind_list?access_token=';
+    //用户解绑
+    public const weDataUnbindUser = self::baseUrl . '/wedata/wedata_unbind_user?access_token=';
+    //用户PC端登录
+    public const weDataLogin = self::baseUrl . '/wedata/wedata_login?access_token=';
 }

@@ -375,7 +375,6 @@ class  OtherApplet
             throw new RuntimeException("文件不存在，或者文件不可读: '$path'");
         }
         $url = sprintf(UrlConfig::mediaUploadImage, $access_token);
-        var_dump($url);
         $file = new \CURLFile($path);
         return $this->curl->post($url, ['media' => $file]);
     }

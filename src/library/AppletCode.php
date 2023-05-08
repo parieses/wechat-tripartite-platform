@@ -2,8 +2,7 @@
 
 namespace WeChat\library;
 
-use Curl\Curl;
-use DOMDocument;
+use http\Exception\RuntimeException;
 use WeChat\UrlConfig;
 
 /**
@@ -33,10 +32,10 @@ class  AppletCode
      * Email:1695699447@qq.com
      * @url https://developers.weixin.qq.com/doc/oplatform/Third-party_Platforms/2.0/api/code/commit.html
      * @param $access_token :第三方平台接口调用令牌authorizer_access_token
-     * @param $template_id  :代码库中的代码模板 ID
-     * @param $ext_json     :第三方自定义的配置
+     * @param $template_id :代码库中的代码模板 ID
+     * @param $ext_json :第三方自定义的配置
      * @param $user_version :代码版本号，开发者可自定义（长度不要超过 64 个字符）
-     * @param $user_desc    :代码描述，开发者可自定义
+     * @param $user_desc :代码描述，开发者可自定义
      * @return mixed
      */
     public function commit($access_token, $template_id, $ext_json, $user_version, $user_desc)
@@ -76,7 +75,7 @@ class  AppletCode
      * Time: 14:25
      * Email:1695699447@qq.com
      * @param $access_token :第三方平台接口调用令牌authorizer_access_token
-     * @param $path         :指定二维码扫码后直接进入指定页面并可同时带上参数）
+     * @param $path :指定二维码扫码后直接进入指定页面并可同时带上参数）
      * @return mixed
      */
     public function getQrCode($access_token, $path)
@@ -95,12 +94,12 @@ class  AppletCode
      * Time: 14:32
      * Email:1695699447@qq.com
      * @url https://developers.weixin.qq.com/doc/oplatform/Third-party_Platforms/2.0/api/code/submit_audit.html
-     * @param $access_token   :第三方平台接口调用令牌authorizer_access_token
-     * @param $item_list      :审核项列表（选填，至多填写 5 项）
-     * @param $preview_info   :预览信息（小程序页面截图和操作录屏）
-     * @param $version_desc   :小程序版本说明和功能解释
-     * @param $ugc_declare    :反馈内容，至多 200 字
-     * @param $feedback_info  :用 | 分割的 media_id 列表，至多 5 张图片, 可以通过新增临时素材接口上传而得到
+     * @param $access_token :第三方平台接口调用令牌authorizer_access_token
+     * @param $item_list :审核项列表（选填，至多填写 5 项）
+     * @param $preview_info :预览信息（小程序页面截图和操作录屏）
+     * @param $version_desc :小程序版本说明和功能解释
+     * @param $ugc_declare :反馈内容，至多 200 字
+     * @param $feedback_info :用 | 分割的 media_id 列表，至多 5 张图片, 可以通过新增临时素材接口上传而得到
      * @param $feedback_stuff :用户生成内容场景（UGC）信息安全声明
      * @return mixed
      */
@@ -132,7 +131,7 @@ class  AppletCode
      * Time: 14:35
      * Email:1695699447@qq.com
      * @param $access_token :第三方平台接口调用令牌authorizer_access_token
-     * @param $auditid      :提交审核时获得的审核 id
+     * @param $auditid :提交审核时获得的审核 id
      * @return mixed
      */
     public function getAuditStatus($access_token, $auditid)
@@ -208,7 +207,7 @@ class  AppletCode
      * Time: 14:46
      * Email:1695699447@qq.com
      * @param $access_token :第三方平台接口调用令牌authorizer_access_token
-     * @param $app_version  :默认是回滚到上一个版本；也可回滚到指定的小程序版本，可通过get_history_version获取app_version
+     * @param $app_version :默认是回滚到上一个版本；也可回滚到指定的小程序版本，可通过get_history_version获取app_version
      * @return mixed
      */
     public function revertCodeRelease($access_token, $app_version)
@@ -227,7 +226,7 @@ class  AppletCode
      * Time: 14:49
      * Email:1695699447@qq.com
      * @param $access_token :第三方平台接口调用令牌authorizer_access_token
-     * @param $action       :只能填get_history_version
+     * @param $action :只能填get_history_version
      * @return mixed
      */
     public function getHistoryVersion($access_token, $action = 'get_history_version')
@@ -245,7 +244,7 @@ class  AppletCode
      * Date: 2021/5/25
      * Time: 14:52
      * Email:1695699447@qq.com
-     * @param $access_token    :第三方平台接口调用令牌authorizer_access_token
+     * @param $access_token :第三方平台接口调用令牌authorizer_access_token
      * @param $gray_percentage :灰度的百分比 1 ~ 100 的整数
      * @return mixed
      */
@@ -294,6 +293,20 @@ class  AppletCode
     }
 
     /**
+     * Remark:查询小程序服务状态
+     * Created by PhpStorm.
+     * User: liang
+     * Date: 2023/5/8 9:55
+     * Name: getVisitStatus:第三方平台接口调用令牌authorizer_access_token
+     * @param $access_token
+     * @return mixed
+     */
+    public function getVisitStatus($access_token)
+    {
+        return $this->curl->post(UrlConfig::getVisitStatus . $access_token);
+    }
+
+    /**
      * 修改小程序服务状态
      * Created by Mr.亮先生.
      * program: wechat-tripartite-platform
@@ -304,7 +317,7 @@ class  AppletCode
      * Time: 14:58
      * Email:1695699447@qq.com
      * @param $access_token :第三方平台接口调用令牌authorizer_access_token
-     * @param $action       :设置可访问状态，发布后默认可访问，close 为不可见，open 为可见
+     * @param $action :设置可访问状态，发布后默认可访问，close 为不可见，open 为可见
      * @return mixed
      */
     public function changeVisitStatus($access_token, $action)
@@ -347,7 +360,7 @@ class  AppletCode
      * Time: 15:05
      * Email:1695699447@qq.com
      * @param $access_token :第三方平台接口调用令牌authorizer_access_token
-     * @param $version      :为已发布的基础库版本号
+     * @param $version :为已发布的基础库版本号
      * @return mixed
      */
     public function setWeappSupportVersion($access_token, $version)
@@ -387,7 +400,7 @@ class  AppletCode
      * Time: 15:06
      * Email:1695699447@qq.com
      * @param $access_token :第三方平台接口调用令牌authorizer_access_token
-     * @param $auditid      :审核单ID
+     * @param $auditid :审核单ID
      * @return mixed
      */
     public function speedUpAudit($access_token, $auditid)
@@ -396,5 +409,53 @@ class  AppletCode
             UrlConfig::speedUpAudit . $access_token,
             json_encode(['auditid' => $auditid])
         );
+    }
+
+    /**
+     * Remark:查询小程序版本信息
+     * Created by PhpStorm.
+     * User: liang
+     * Date: 2023/5/8 9:57
+     * Name: getVersionInfo
+     * @param $access_token
+     * @return mixed
+     */
+    public function getVersionInfo($access_token)
+    {
+        return $this->curl->post(UrlConfig::getVersionInfo . $access_token, "{}");
+    }
+
+    /**
+     * Remark:上传提审素材
+     * Created by PhpStorm.
+     * User: liang
+     * Date: 2023/5/8 9:59
+     * Name: uploadMediaToCodeAudit
+     * @param $access_token
+     * @param $path
+     * @return mixed
+     */
+    public function uploadMediaToCodeAudit($access_token, $path)
+    {
+        if (!file_exists($path) || !is_readable($path)) {
+            throw new RuntimeException("文件不存在，或者文件不可读: '$path'");
+        }
+        $url = UrlConfig::uploadMediaToCodeAudit . $access_token;
+        $file = new \CURLFile($path);
+        return $this->curl->post($url, ['media' => $file]);
+    }
+
+    /**
+     * Remark:获取隐私接口检测结果
+     * Created by PhpStorm.
+     * User: liang
+     * Date: 2023/5/8 10:00
+     * Name: getCodePrivacyInfo
+     * @param $access_token
+     * @return mixed
+     */
+    public function getCodePrivacyInfo($access_token)
+    {
+        return $this->curl->get(UrlConfig::getCodePrivacyInfo . $access_token);
     }
 }

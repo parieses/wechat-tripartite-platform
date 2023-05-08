@@ -3,7 +3,6 @@
 
 use WeChat\library\Authorization;
 use WeChat\library\OpenPlatform;
-use WeChat\library\OtherApplet;
 use WeChat\WeChatServer;
 
 require __DIR__ . '/vendor/autoload.php';
@@ -184,5 +183,18 @@ $weChat = new WeChatServer(Authorization::class, ['componentAppId' => $component
 $OpenPlatform = new OpenPlatform();
 
 //$da = $OpenPlatform->modifyThirdpartyServerDomain('68_6eRWb9z9DrPtic8_cBWsBZCyZ81pqPYD3vcUrZ6-QI2ZsDTS5dPf0FZryIi1Fu6WXUSX-nJC36U4ZneVvsfM39w672CmADD972wHmNd3EXGJMOOGpEw77KIjiMUMDEaAHAXOP','get');
-$da = $OpenPlatform->modifyThirdpartyJumpDomain('68_6eRWb9z9DrPtic8_cBWsBZCyZ81pqPYD3vcUrZ6-QI2ZsDTS5dPf0FZryIi1Fu6WXUSX-nJC36U4ZneVvsfM39w672CmADD972wHmNd3EXGJMOOGpEw77KIjiMUMDEaAHAXOP','get');
-var_dump($da);
+//$da = $OpenPlatform->modifyThirdpartyJumpDomain('68_6eRWb9z9DrPtic8_cBWsBZCyZ81pqPYD3vcUrZ6-QI2ZsDTS5dPf0FZryIi1Fu6WXUSX-nJC36U4ZneVvsfM39w672CmADD972wHmNd3EXGJMOOGpEw77KIjiMUMDEaAHAXOP','get');
+//var_dump($da);
+
+
+//上传提审素材
+//$remoteFileUrl = 'https://view.yuanqianht.com/piao/2022/09/24/796fc9aa40e0fe82ee7fc44a6f7b339e.png';
+//$file_path = './1.png';
+//file_put_contents($file_path, file_get_contents($remoteFileUrl));
+//$data = new \WeChat\library\AppletCode();
+$token = "68__nFxILy6RGBvj0mr2xt0f6mrCKC-5V4x2Q4aFZSP66ilpCpE3Fv11_DiB-19hhpofxCwDY90KSy8uNrZo7xMCLUwUyqF526kYiSc8atuAyoMDMJBGspX0ugXsnENrakjagiOtEh4oSMMpZxmDRLcADDJXR";
+//var_dump($data->uploadMediaToCodeAudit($token, $file_path));
+//获取隐私接口检测结果
+$data = new \WeChat\library\We();
+//var_dump($data->getCodePrivacyInfo($token));
+var_dump($data->weDataLogin($token,'1',1,'127.0.0.4','12'));
