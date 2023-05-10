@@ -345,7 +345,7 @@ class  AppletCode
     {
         return $this->curl->post(
             UrlConfig::getWeappSupportVersion . $access_token,
-            json_encode([])
+            "{}"
         );
     }
 
