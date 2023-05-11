@@ -225,7 +225,7 @@ class  AppletBasicInformation
      */
     public function modifySignature($access_token, $signature)
     {
-        return $this->curl->post(UrlConfig::modifySignature . $access_token, json_encode(['signature' => $signature, JSON_UNESCAPED_UNICODE]));
+        return $this->curl->post(UrlConfig::modifySignature . $access_token, json_encode(['signature' => $signature], JSON_UNESCAPED_UNICODE));
     }
 
     /**
