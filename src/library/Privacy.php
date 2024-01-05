@@ -38,7 +38,7 @@ class  Privacy
     {
         return $this->curl->post(
             UrlConfig::setPrivacySetting . $access_token,
-            json_encode(['privacy_ver' => $privacy_ver, 'owner_setting' => $owner_setting, 'setting_list' => $setting_list])
+            json_encode(['privacy_ver' => $privacy_ver, 'owner_setting' => $owner_setting, 'setting_list' => $setting_list],JSON_UNESCAPED_UNICODE)
         );
     }
 

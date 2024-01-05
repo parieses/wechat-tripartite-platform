@@ -2,6 +2,8 @@
 
 namespace WeChat\library;
 
+use Exception;
+use RuntimeException;
 use WeChat\UrlConfig;
 
 /**
@@ -40,26 +42,36 @@ class  AppletMember
             json_encode(['wechatid' => $wechatid])
         );
     }
-
-    /**
-     * Created by Mr.亮先生.
-     * program: wechat-tripartite-platform
-     * FuncName:unbindTester
-     * status:
-     * User: Mr.liang
-     * Date: 2021/5/25
-     * Time: 11:42
-     * Email:1695699447@qq.com
-     * @param $access_token :第三方平台接口调用令牌authorizer_access_token
-     * @param $wechatid     :微信号
-     * @param $userstr      :人员对应的唯一字符串， 可通过获取已绑定的体验者列表获取人员对应的字符串
-     * @return mixed
-     */
-    public function unbindTester($access_token, $wechatid, $userstr)
+	
+	/**
+	 * Created by Mr.亮先生.
+	 * program: wechat-tripartite-platform
+	 * FuncName:unbindTester
+	 * status:
+	 * User: Mr.liang
+	 * Date: 2021/5/25
+	 * Time: 11:42
+	 * Email:1695699447@qq.com
+	 * @param $access_token :第三方平台接口调用令牌authorizer_access_token
+	 * @param $wechatid :微信号
+	 * @param $userstr :人员对应的唯一字符串， 可通过获取已绑定的体验者列表获取人员对应的字符串
+	 * @return mixed
+	 */
+    public function unbindTester($access_token, $wechatid = '', $userstr = '')
     {
+		$data = [];
+		if ($wechatid){
+			$data['wechatid'] = $wechatid;
+		}
+		if ($userstr){
+			$data['userstr'] = $userstr;
+		}
+		if (count($data) === 2){
+			throw new RuntimeException('参数错误');
+		}
         return $this->curl->post(
             UrlConfig::unbindTester . $access_token,
-            json_encode(['wechatid' => $wechatid, 'userstr' => $userstr])
+            json_encode($data)
         );
     }
 
