@@ -3,6 +3,7 @@
 
 use WeChat\library\Authorization;
 use WeChat\library\OpenPlatform;
+use WeChat\library\TrialApplet;
 use WeChat\WeChatServer;
 
 require __DIR__ . '/vendor/autoload.php';
@@ -19,12 +20,21 @@ $token = 'henanwaifu';
 //消息加解密Key
 $encodingAesKey = '1CD37E73D5D74B439A167DE3014FD882521XINGFULI';
 $xml = generate('admin', 'admin', 'hello world');
-$weChat = new WeChatServer(Authorization::class, ['componentAppId' => $componentAppId, 'componentAppSecret' => $componentAppSecret, 'token' => $token, 'encodingAesKey' => $encodingAesKey]);
+//$weChat = new WeChatServer(Authorization::class, ['componentAppId' => $componentAppId, 'componentAppSecret' => $componentAppSecret, 'token' => $token, 'encodingAesKey' => $encodingAesKey]);
 //$data = ['ticket' => 'znki2rGXe30AWTWliIrpKBVxUNf-TOQQ-54RQrXqdCULxUOtlxksDlk0batVSuzL75xvz-cbpOnKPK1tlXsqqw'];
 //var_dump($weChat->exec('getComponentAccessToken',$data));
 //获取要操作的类
-$object        = $weChat->getInstance();
-var_dump($object->encryptMsg($xml,time(),'123132'));die();
+//$object        = $weChat->getInstance();
+$model  = new  TrialApplet();
+//$a = $model->fastregisterweapp("76_8reKfRPg0lc6sKUlFjrLrsRduBB62AiDoka7MnMomWIYpDOzzdXfIGmu_2hqro0m_oyfNcbjbBvcnZTDG5cCc4cxd7f5l9bxqOoQFj9DG6lChapbg7Kx23L0ZBQZXFbACAMKS",$data,'search');
+$a  = $model->fastregister("76_8reKfRPg0lc6sKUlFjrLrsRduBB62AiDoka7MnMomWIYpDOzzdXfIGmu_2hqro0m_oyfNcbjbBvcnZTDG5cCc4cxd7f5l9bxqOoQFj9DG6lChapbg7Kx23L0ZBQZXFbACAMKS",'2133333333333333333333333333');
+
+$data = ['idname'=>'王亮亮','wxuser'=>"pariese","component_phone"=>"13611111111"];
+
+$a  = $model->fastregisterpersonalweapp("76_8reKfRPg0lc6sKUlFjrLrsRduBB62AiDoka7MnMomWIYpDOzzdXfIGmu_2hqro0m_oyfNcbjbBvcnZTDG5cCc4cxd7f5l9bxqOoQFj9DG6lChapbg7Kx23L0ZBQZXFbACAMKS",$data);
+
+var_dump($a);die();
+//var_dump($object->encryptMsg($xml,time(),'123132'));die();
 //$apiStartPushTicket = $object->apiStartPushTicket();
 //通过ticket 获取 获取令牌
 //$token = $object->apiComponentToken($data['ticket']);
