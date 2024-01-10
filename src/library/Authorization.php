@@ -372,4 +372,11 @@ class Authorization
         $errCode = $pc->decryptMsg($msg_signature, $timestamp, $nonce, $from_xml, $message);
         return $errCode == 0 ? $message : false;
     }
+	private function encryptMsg($msg_signature, $timestamp, $nonce)
+	{
+		$pc = new wxBizMsgCrypt($this->token, $this->encodingAesKey, $this->componentAppId);
+		$message = '';
+		$errCode = $pc->encryptMsg($msg_signature, $timestamp, $nonce, $message);
+		return $errCode == 0 ? $message : false;
+	}
 }
