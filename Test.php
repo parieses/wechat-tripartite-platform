@@ -7,18 +7,24 @@ use WeChat\WeChatServer;
 
 require __DIR__ . '/vendor/autoload.php';
 
-
+  function generate($ToUserName, $FromUserName, $Content, $MsgType = 'text')
+{
+	$format = "<xml><ToUserName><![CDATA[%s]]></ToUserName><FromUserName><![CDATA[%s]]></FromUserName><CreateTime>%s</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[%s]]></Content></xml>";
+	return sprintf($format, $ToUserName, $FromUserName, time(), $Content);
+}
 $componentAppId = 'wx108c9cc5a36ef1b0';
 $componentAppSecret = '10cbbc0b28fa9dee578b8bf0f2696e48';
 //消息校验Token
 $token = 'henanwaifu';
 //消息加解密Key
 $encodingAesKey = '1CD37E73D5D74B439A167DE3014FD882521XINGFULI';
+$xml = generate('admin', 'admin', 'hello world');
 $weChat = new WeChatServer(Authorization::class, ['componentAppId' => $componentAppId, 'componentAppSecret' => $componentAppSecret, 'token' => $token, 'encodingAesKey' => $encodingAesKey]);
 //$data = ['ticket' => 'znki2rGXe30AWTWliIrpKBVxUNf-TOQQ-54RQrXqdCULxUOtlxksDlk0batVSuzL75xvz-cbpOnKPK1tlXsqqw'];
 //var_dump($weChat->exec('getComponentAccessToken',$data));
 //获取要操作的类
-//$object = $weChat->getInstance();
+$object        = $weChat->getInstance();
+var_dump($object->encryptMsg($xml,time(),'123132'));die();
 //$apiStartPushTicket = $object->apiStartPushTicket();
 //通过ticket 获取 获取令牌
 //$token = $object->apiComponentToken($data['ticket']);
