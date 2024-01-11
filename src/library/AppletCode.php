@@ -303,7 +303,7 @@ class  AppletCode
      */
     public function getVisitStatus($access_token)
     {
-        return $this->curl->post(UrlConfig::getVisitStatus . $access_token);
+        return $this->curl->post(UrlConfig::getVisitStatus . $access_token,"{}");
     }
 
     /**
