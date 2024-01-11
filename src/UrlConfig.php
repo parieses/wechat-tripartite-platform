@@ -312,4 +312,12 @@ class UrlConfig
 	public const weDataUnbindUser = self::baseUrl . '/wedata/wedata_unbind_user?access_token=';
 	//用户PC端登录
 	public const weDataLogin = self::baseUrl . '/wedata/wedata_login?access_token=';
+	/**
+	 * 插件管理
+	 * @RUL:https://developers.weixin.qq.com/miniprogram/dev/OpenApiDoc/plugin-management/managePluginApplication.html
+	 */
+	//插件申请管理
+	public const devplugin = self::baseUrl. '/wxa/devplugin?access_token=';
+	//插件管理
+	public const plugin = self::baseUrl. '/wxa/plugin?access_token=';
 }

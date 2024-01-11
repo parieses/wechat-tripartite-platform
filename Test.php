@@ -13,6 +13,9 @@ require __DIR__ . '/vendor/autoload.php';
 	$format = "<xml><ToUserName><![CDATA[%s]]></ToUserName><FromUserName><![CDATA[%s]]></FromUserName><CreateTime>%s</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[%s]]></Content></xml>";
 	return sprintf($format, $ToUserName, $FromUserName, time(), $Content);
 }
+
+
+
 $componentAppId = 'wx108c9cc5a36ef1b0';
 $componentAppSecret = '10cbbc0b28fa9dee578b8bf0f2696e48';
 //消息校验Token
@@ -20,6 +23,11 @@ $token = 'henanwaifu';
 //消息加解密Key
 $encodingAesKey = '1CD37E73D5D74B439A167DE3014FD882521XINGFULI';
 $xml = generate('admin', 'admin', 'hello world');
+
+$model = new \WeChat\library\OtherApplet();
+$data = ['action'=>'list','plugin_appid'=>'wxfd41bbd0f83ffe83','reason'=>'1231313'];
+$a = $model->plugin("76_ndpkppYEDzfu2eUDQ_ev-xcaeMnTbdQZYc4Iyn2k8xk2YaTh-f5EueQX94mDh7bxxi5mZSUy9AGZetf8I1XRxfbAvT7DbY4jNJ1NqCuv9ezkL_yCoFhexG9XNgJbziD4TZ1f2tk7kWK0EeA8RGNgAEDZOV",$data);
+var_dump($a);die();
 //$weChat = new WeChatServer(Authorization::class, ['componentAppId' => $componentAppId, 'componentAppSecret' => $componentAppSecret, 'token' => $token, 'encodingAesKey' => $encodingAesKey]);
 //$data = ['ticket' => 'znki2rGXe30AWTWliIrpKBVxUNf-TOQQ-54RQrXqdCULxUOtlxksDlk0batVSuzL75xvz-cbpOnKPK1tlXsqqw'];
 //var_dump($weChat->exec('getComponentAccessToken',$data));
