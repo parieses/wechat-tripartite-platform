@@ -23,8 +23,7 @@
     "ext-simplexml": "*",
     "guzzlehttp/guzzle": "^7.4",
     "wechatpay/wechatpay": "^1.4",
-    "ext-curl": "*",
-    "ext-mcrypt": "*"
+    "ext-curl": "*"
   },
   "repositories": [
     {
