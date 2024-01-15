@@ -74,7 +74,6 @@ class Prpcrypt
 	 */
 	public function encrypt($text, $appid)
 	{
-		
 		try {
 			$random = $this->getRandomStr();
 			$text = $random . pack("N", strlen($text)) . $text . $appid;
@@ -85,6 +84,7 @@ class Prpcrypt
 			//使用BASE64对加密后的字符串进行编码
 			return array(ErrorCode::$OK, base64_encode($encrypted));
 		} catch (Exception $e) {
+			//print $e;
 			return array(ErrorCode::$EncryptAESError, null);
 		}
 	}
