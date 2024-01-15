@@ -70,7 +70,7 @@ class Prpcrypt
 	/**
 	 * 对明文进行加密
 	 * @param string $text 需要加密的明文
-	 * @return string 加密后的密文
+	 * @return array|string
 	 */
 	public function encrypt($text, $appid)
 	{
