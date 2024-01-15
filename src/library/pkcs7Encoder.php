@@ -1,5 +1,7 @@
 <?php
 namespace WeChat\library;
+use Exception;
+
 include_once "errorCode.php";
 
 /**
@@ -72,29 +74,17 @@ class Prpcrypt
 	 */
 	public function encrypt($text, $appid)
 	{
-
+		
 		try {
-			//获得16位随机字符串，填充到明文之前
 			$random = $this->getRandomStr();
 			$text = $random . pack("N", strlen($text)) . $text . $appid;
-			// 网络字节序
-			$size = mcrypt_get_block_size(MCRYPT_RIJNDAEL_128, MCRYPT_MODE_CBC);
-			$module = mcrypt_module_open(MCRYPT_RIJNDAEL_128, '', MCRYPT_MODE_CBC, '');
 			$iv = substr($this->key, 0, 16);
-			//使用自定义的填充方式对明文进行补位填充
 			$pkc_encoder = new PKCS7Encoder;
 			$text = $pkc_encoder->encode($text);
-			mcrypt_generic_init($module, $this->key, $iv);
-			//加密
-			$encrypted = mcrypt_generic($module, $text);
-			mcrypt_generic_deinit($module);
-			mcrypt_module_close($module);
-
-			//print(base64_encode($encrypted));
+			$encrypted = openssl_encrypt($text, 'AES-256-CBC', $this->key, OPENSSL_RAW_DATA|OPENSSL_ZERO_PADDING, $iv);
 			//使用BASE64对加密后的字符串进行编码
 			return array(ErrorCode::$OK, base64_encode($encrypted));
 		} catch (Exception $e) {
-			//print $e;
 			return array(ErrorCode::$EncryptAESError, null);
 		}
 	}
