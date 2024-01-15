@@ -154,8 +154,8 @@ class  AppletBasicInformation
      */
     public function checkWxVerifyNickname($access_token, $nick_name)
     {
-        return $this->curl->post(UrlConfig::checkWxVerifyNickname . $access_token, json_encode(['nick_name' => $nick_name,]));
-    }
+		return $this->curl->post(UrlConfig::checkWxVerifyNickname . $access_token, json_encode(['nick_name' => $nick_name],JSON_UNESCAPED_UNICODE));
+	}
 
     /**
      * 查询改名审核状态
