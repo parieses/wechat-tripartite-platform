@@ -63,23 +63,23 @@ class Authorization
             $xml->loadXML($message);
             $infoType = $xml->getElementsByTagName('InfoType')->item(0)->nodeValue;
             $data = ['type' => $infoType];
-	switch ($infoType) {
-		case "component_verify_ticket":
-			$componentVerifyTicket   = $xml->getElementsByTagName('ComponentVerifyTicket')->item(0)->nodeValue;
-			$component_verify_ticket = preg_replace("/ticket@@@/", "", $componentVerifyTicket);//处理解密后的字符串
-			$data['data']            = $component_verify_ticket;
-			break;
-		case "authorized":
-		case "updateauthorized":
-			$data['data']                         = $xml->getElementsByTagName('AuthorizerAppid')->item(0)->nodeValue;
-			$data['AuthorizationCode']            = $xml->getElementsByTagName('AuthorizationCode')->item(0)->nodeValue;
-			$data['AuthorizationCodeExpiredTime'] = $xml->getElementsByTagName('AuthorizationCodeExpiredTime')->item(0)->nodeValue;
-			$data['PreAuthCode']                  = $xml->getElementsByTagName('PreAuthCode')->item(0)->nodeValue;
-			break;
-		default:
-			$data['data'] = $xml->getElementsByTagName('AuthorizerAppid')->item(0)->nodeValue;
-			break;
-	}
+			switch ($infoType) {
+				case "component_verify_ticket":
+					$componentVerifyTicket   = $xml->getElementsByTagName('ComponentVerifyTicket')->item(0)->nodeValue;
+					$component_verify_ticket = preg_replace("/ticket@@@/", "", $componentVerifyTicket);//处理解密后的字符串
+					$data['data']            = $component_verify_ticket;
+					break;
+				case "authorized":
+				case "updateauthorized":
+					$data['data']                         = $xml->getElementsByTagName('AuthorizerAppid')->item(0)->nodeValue;
+					$data['AuthorizationCode']            = $xml->getElementsByTagName('AuthorizationCode')->item(0)->nodeValue;
+					$data['AuthorizationCodeExpiredTime'] = $xml->getElementsByTagName('AuthorizationCodeExpiredTime')->item(0)->nodeValue;
+					$data['PreAuthCode']                  = $xml->getElementsByTagName('PreAuthCode')->item(0)->nodeValue;
+					break;
+				default:
+					$data['data'] = $xml->getElementsByTagName('AuthorizerAppid')->item(0)->nodeValue;
+					break;
+			}
             return $data;
         }
         return false;
