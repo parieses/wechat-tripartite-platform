@@ -42,7 +42,7 @@ class  AppletCode
     {
         return $this->curl->post(
             UrlConfig::commit . $access_token,
-            json_encode(['template_id' => $template_id, 'ext_json' => $ext_json, 'user_version' => $user_version, 'user_desc' => $user_desc])
+            json_encode(['template_id' => $template_id, 'ext_json' => $ext_json, 'user_version' => $user_version, 'user_desc' => $user_desc],JSON_UNESCAPED_UNICODE)
         );
     }
 
